@@ -1,0 +1,74 @@
+@import "@styles/_variable";
+
+.Header {
+	padding: 5vw 4vw;
+	max-width: 20vw;
+	box-sizing: border-box;
+	height: 100vh;
+	
+	.title {
+		font-size: 2.2vw;
+		line-height: 1.2;
+		margin-bottom: 33px;
+	}
+	
+	.menu {
+		text-transform: uppercase;
+		letter-spacing: 2.8px;
+		line-height: 1.2;
+		
+		.menuTitle {
+			font-weight: 400;
+			user-select: none;
+			cursor: pointer;
+			
+			&.active {
+				color: $page-hg-color;
+			}
+		}
+		
+		.category {
+			list-style: none;
+			padding-left: 1.5vw;
+			
+			li {
+				transform: translateY(-30%);
+				opacity: 0;
+				transition: transform .3s ease, opacity .3s ease;
+				
+				a {
+					transition: color .2s ease;
+					
+					&:hover {
+						color: $page-hg-color;
+					}
+				}
+			}
+			
+			li:not(:last-child) {
+				margin-bottom: 1vh;
+			}
+			
+			&:not(.active) {
+				li:nth-child(1) {
+					transition-delay: .1s;
+				}
+			}
+			
+			&.active {
+				li {
+					transform: translateY(0);
+					opacity: 1;
+					
+					&:nth-child(2) {
+						transition-delay: .1s;
+					}
+				}
+			}
+		}
+	}
+	
+	a {
+		white-space: pre-line;
+	}
+}
