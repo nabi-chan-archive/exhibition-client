@@ -8,8 +8,14 @@ export default function Home() {
       <Head>
       </Head>
 
-      <main>
+      <main style={{
+        display: 'grid',
+        gridTemplateColumns: '20vw 80vw'
+      }}>
         <Header />
+        
+        <section>
+        </section>
       </main>
     </>
   );
