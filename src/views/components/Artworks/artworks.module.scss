@@ -1,0 +1,54 @@
+@import "@styles/_mixin";
+
+.container {
+	display: grid;
+	
+	box-sizing: border-box;
+	padding: 5vw 4vw;
+	max-height: 100vh;
+	overflow-y: auto;
+	
+	grid-template-columns: repeat(4, 1fr);
+	grid-column-gap: 2vw;
+	grid-template-areas:
+		"content1 content2 content3 content4";
+	
+	.column {
+		display: grid;
+		grid-row-gap: 2vw;
+		margin-bottom: 5vw;
+		
+		@for $i from 1 to 4 {
+			&:nth-child(#{$i}) {
+				grid-area: "content" + $i;
+			}
+		}
+		
+		.row {
+		
+		}
+	}
+	
+	@include mobile {
+		grid-template-columns: repeat(2, 1fr);
+		grid-column-gap: 4vw;
+		padding: 0 4vw;
+		max-height: none;
+		grid-template-areas:
+		"content1 content2"
+		"content3 content4";
+		
+		.column {
+			grid-row-gap: 4vw;
+		}
+	}
+	
+	@include iphone {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"content1"
+			"content2"
+			"content3"
+			"content4";
+	}
+}
