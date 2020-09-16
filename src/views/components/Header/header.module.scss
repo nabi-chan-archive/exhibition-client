@@ -1,8 +1,12 @@
 @import "@styles/_variable";
+@import "@styles/_mixin";
 
 .Header {
 	padding: 5vw 4vw;
 	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	left: 0;
 	height: 100vh;
 	
 	.title {
@@ -31,7 +35,7 @@
 			padding-left: 1.5vw;
 			
 			li {
-				transform: translateY(-30%);
+				transform: translate(0, -30%);
 				opacity: 0;
 				transition: transform .3s ease, opacity .3s ease;
 				
@@ -60,7 +64,7 @@
 			
 			&.active {
 				li {
-					transform: translateY(0);
+					transform: translate(0, 0);
 					opacity: 1;
 					
 					&:nth-child(2) {
@@ -73,5 +77,25 @@
 	
 	a {
 		white-space: pre-line;
+	}
+	
+	@include mobile {
+		position: relative;
+		height: auto;
+		
+		.title {
+			font-size: 4vw;
+		}
+		
+		.menu {
+			display: flex;
+			align-items: center;
+			
+			.category {
+				li {
+					transform: translate(-4%, 0);
+				}
+			}
+		}
 	}
 }
