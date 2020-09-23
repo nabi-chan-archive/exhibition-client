@@ -12,9 +12,7 @@ export default function Home() {
       <main>
         <Header />
         
-        <section>
-          <Artworks />
-        </section>
+        <Artworks />
       </main>
     </>
   );

@@ -5,126 +5,47 @@ import {Artwork} from "@components/Artwork/Artwork";
 
 const artworkMock = [
   {
+    id: 1,
     type: 'photography',
     img_src: 'http://placehold.it/1920x1080',
     title: 'test'
   },
   {
+    id: 2,
     type: 'poster',
     img_src: 'http://placehold.it/300x400',
     title: 'test'
   },
   {
+    id: 3,
     type: 'poster',
     img_src: 'http://placehold.it/300x400',
     title: 'test'
   },
   {
+    id: 4,
     type: 'photography',
     img_src: 'http://placehold.it/1920x1080',
     title: 'test'
   },
   {
+    id: 5,
     type: 'poster',
     img_src: 'http://placehold.it/300x400',
     title: 'test'
   },
   {
+    id: 6,
     type: 'photography',
     img_src: 'http://placehold.it/1920x1080',
     title: 'test'
   },
   {
+    id: 7,
     type: 'photography',
     img_src: 'http://placehold.it/1920x1080',
     title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'photography',
-    img_src: 'http://placehold.it/1920x1080',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'photography',
-    img_src: 'http://placehold.it/1920x1080',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'photography',
-    img_src: 'http://placehold.it/1920x1080',
-    title: 'test'
-  },
-  {
-    type: 'photography',
-    img_src: 'http://placehold.it/1920x1080',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'photography',
-    img_src: 'http://placehold.it/1920x1080',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
-  
-  {
-    type: 'poster',
-    img_src: 'http://placehold.it/300x400',
-    title: 'test'
-  },
+  }
 ]
 
 function Row({ artwork }) {
