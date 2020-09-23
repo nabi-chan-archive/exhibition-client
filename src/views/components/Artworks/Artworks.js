@@ -1,37 +1,157 @@
 import React from 'react';
 import css from './artworks.module.scss';
 
+import {Artwork} from "@components/Artwork/Artwork";
+
+const artworkMock = [
+  {
+    type: 'photography',
+    img_src: 'http://placehold.it/1920x1080',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'photography',
+    img_src: 'http://placehold.it/1920x1080',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'photography',
+    img_src: 'http://placehold.it/1920x1080',
+    title: 'test'
+  },
+  {
+    type: 'photography',
+    img_src: 'http://placehold.it/1920x1080',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'photography',
+    img_src: 'http://placehold.it/1920x1080',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'photography',
+    img_src: 'http://placehold.it/1920x1080',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'photography',
+    img_src: 'http://placehold.it/1920x1080',
+    title: 'test'
+  },
+  {
+    type: 'photography',
+    img_src: 'http://placehold.it/1920x1080',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'photography',
+    img_src: 'http://placehold.it/1920x1080',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+  
+  {
+    type: 'poster',
+    img_src: 'http://placehold.it/300x400',
+    title: 'test'
+  },
+]
+
+function Row({ artwork }) {
+  return (
+      <div className={css.row}>
+        <Artwork {...artwork} />
+      </div>
+  )
+}
+
 export function Artworks() {
+  const cell = Math.floor(artworkMock.length / 4)
+  
   return (
       <section className={css.container}>
-        <div className={css.column}>
-          <div className="row">content1</div>
-          <div className="row">content2</div>
-          <div className="row">content3</div>
-          <div className="row">content4</div>
-          <div className="row">content5</div>
-        </div>
-        <div  className={css.column}>
-          <div className="row">content6</div>
-          <div className="row">content7</div>
-          <div className="row">content8</div>
-          <div className="row">content9</div>
-          <div className="row">content10</div>
-        </div>
-        <div className={css.column}>
-          <div className="row">content11</div>
-          <div className="row">content12</div>
-          <div className="row">content13</div>
-          <div className="row">content14</div>
-          <div className="row">content15</div>
-        </div>
-        <div className={css.column}>
-          <div className="row">content16</div>
-          <div className="row">content17</div>
-          <div className="row">content18</div>
-          <div className="row">content19</div>
-          <div className="row">content20</div>
-        </div>
+          <div className={css.column}>
+            {artworkMock.map((artwork, i) => i <= cell ? <Row artwork={artwork} key={i} /> : null)}
+          </div>
+          <div className={css.column}>
+            {artworkMock.map((artwork, i) => i <= cell * 2 && i > cell ? <Row artwork={artwork} key={i} /> : null)}
+          </div>
+          <div className={css.column}>
+            {artworkMock.map((artwork, i) => i <= cell * 3 && i > cell * 2 ? <Row artwork={artwork} key={i} /> : null)}
+          </div>
+          <div className={css.column}>
+            {artworkMock.map((artwork, i) => i >= cell * 3 ? <Row artwork={artwork} key={i} /> : null)}
+          </div>
       </section>
   );
 }

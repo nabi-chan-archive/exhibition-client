@@ -1,54 +1,49 @@
 @import "@styles/_mixin";
 
+@mixin notLastChild {
+	&:not(:last-child) {
+		@content
+	}
+}
+
 .container {
-	display: grid;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 5vw 1vw;
 	
-	box-sizing: border-box;
-	padding: 5vw 4vw;
-	max-height: 100vh;
-	overflow-y: auto;
-	
-	grid-template-columns: repeat(4, 1fr);
-	grid-column-gap: 2vw;
-	grid-template-areas:
-		"content1 content2 content3 content4";
-	
+	// PC UI (1 x 4 / 2vw x 2vw / 1vw per line)
 	.column {
-		display: grid;
-		grid-row-gap: 2vw;
-		margin-bottom: 5vw;
-		
-		@for $i from 1 to 4 {
-			&:nth-child(#{$i}) {
-				grid-area: "content" + $i;
-			}
-		}
+		box-sizing: border-box;
+		flex: 1 0 25%;
+		padding: 0 1vw;
 		
 		.row {
-		
+			padding: 1vw 0;
 		}
 	}
 	
+	// mobile UI (2 x 2 / 4vw x 4vw / 2vw per line)
 	@include mobile {
-		grid-template-columns: repeat(2, 1fr);
-		grid-column-gap: 4vw;
-		padding: 0 4vw;
-		max-height: none;
-		grid-template-areas:
-		"content1 content2"
-		"content3 content4";
+		padding: 5vw 2vw;
 		
 		.column {
-			grid-row-gap: 4vw;
+			width: 100%;
+			flex: none;
+			padding: 0 2vw;
+			
+			.row {
+				padding: 2vw 0;
+			}
+			
 		}
 	}
 	
+	// iphone UI (4 x 1 / inherit)
 	@include iphone {
-		grid-template-columns: 1fr;
-		grid-template-areas:
-			"content1"
-			"content2"
-			"content3"
-			"content4";
+		.column {
+			.row {
+			
+			}
+		}
 	}
 }
