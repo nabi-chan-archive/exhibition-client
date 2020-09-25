@@ -20,3 +20,13 @@
 		}
 	}
 }
+
+@include mobile {
+	.article {
+		.image {
+			&.small {
+				width: 50%;
+			}
+		}
+	}
+}
