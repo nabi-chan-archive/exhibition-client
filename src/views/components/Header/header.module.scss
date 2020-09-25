@@ -15,26 +15,30 @@
 		margin-bottom: 33px;
 	}
 	
-	.menu {
+	.subTitle {
+		font-weight: 400;
+		user-select: none;
+		cursor: pointer;
+		
 		text-transform: uppercase;
 		letter-spacing: 2.8px;
-		line-height: 1.2;
 		
-		.menuTitle {
-			font-weight: 400;
-			user-select: none;
-			cursor: pointer;
-			
-			&.active {
-				color: $page-hg-color;
-			}
+		&.active {
+			color: $page-hg-color;
 		}
+	}
+	
+	.menu {
+		line-height: 1.2;
 		
 		.category {
 			list-style: none;
 			padding-left: 1.5vw;
 			
 			li {
+				text-transform: uppercase;
+				letter-spacing: 2.8px;
+				
 				transform: translate(0, -30%);
 				opacity: 0;
 				transition: transform .3s ease, opacity .3s ease;

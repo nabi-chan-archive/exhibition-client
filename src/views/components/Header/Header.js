@@ -4,30 +4,34 @@ import Link from "next/link";
 import css from './header.module.scss';
 import classcat from "classcat";
 
-function Category({isOpened}) {
+export function Menu() {
+  const [isOpened, setIsOpened] = useState(false);
+  
+  const toggleOpen = () => setIsOpened(prevState => !prevState);
+  
   return (
-      <ul className={classcat([css.category, isOpened && css.active])}>
-        <li>
-          <Link href="/photography"><a>photography</a></Link>
-        </li>
-        <li>
-          <Link href="/poster"><a>poster</a></Link>
-        </li>
-      </ul>
+      <div className={css.menu}>
+        <h2 className={classcat([css.subTitle, isOpened && css.active])} onClick={toggleOpen}>category</h2>
+  
+        <ul className={classcat([css.category, isOpened && css.active])}>
+          <li>
+            <Link href="/photography"><a>photography</a></Link>
+          </li>
+          <li>
+            <Link href="/poster"><a>poster</a></Link>
+          </li>
+        </ul>
+      </div>
   )
 }
 
-function Back() {
+export function Back() {
   const router = useRouter();
   
-  return <h2 className={classcat(css.menuTitle)} onClick={() => router.back()}>Back</h2>;
+  return <h2 className={classcat([css.subTitle, css.active])} onClick={() => router.back()}>Back</h2>;
 }
 
-export function Header() {
-  const [isOpened, setIsOpened] = useState(false);
-  const toggleOpen = useCallback(() => {
-    setIsOpened(!isOpened)
-  }, [isOpened])
+export function Header({ children }) {
   return (
       <div className={css.Header}>
         <Link href="/">
@@ -36,11 +40,7 @@ export function Header() {
           </h1>
         </Link>
         
-        <div className={css.menu}>
-          <h2 className={classcat([css.menuTitle, isOpened && css.active])} onClick={toggleOpen}>category</h2>
-  
-          <Category isOpened={isOpened} />
-        </div>
+        {children}
       </div>
   )
 }
