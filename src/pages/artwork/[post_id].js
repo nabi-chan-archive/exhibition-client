@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from "next/head";
 import {useRouter} from "next/router";
-import {Header, Back} from "@components/Header/Header";
+import {Header, Back, Content} from "@components/Header/Header";
 import {Detail} from "@components/Detail/Detail";
 
 export default function Articles() {
@@ -19,6 +19,7 @@ export default function Articles() {
         <main>
           <Header>
             <Back />
+            <Content />
           </Header>
   
           <Detail />

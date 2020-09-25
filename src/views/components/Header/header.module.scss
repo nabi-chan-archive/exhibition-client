@@ -103,3 +103,46 @@
 		}
 	}
 }
+
+.content {
+	padding: 5vh 0;
+	
+	.artTitle {
+		margin-bottom: 2vh;
+		font-size: 1.7vw;
+	}
+	
+	.about {
+		margin-bottom: 5vh;
+		font-size: 1.2vw;
+		font-weight: 400;
+	}
+	
+	.text {
+		white-space: pre-line;
+		word-break: keep-all;
+		font-size: 1.2vw;
+	}
+	
+	@include mobile {
+		&:not(.isContent) {
+			display: none;
+		}
+		
+		padding: 0 5vw;
+		
+		.artTitle {
+			margin-bottom: 2vh;
+			font-size: 3.5vw;
+		}
+		
+		.about {
+			margin-bottom: 2vh;
+			font-size: 2.5vw;
+		}
+		
+		.text {
+			font-size: 2.5vw;
+		}
+	}
+}
