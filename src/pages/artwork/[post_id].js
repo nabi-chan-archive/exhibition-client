@@ -3,6 +3,7 @@ import Head from "next/head";
 import {useRouter} from "next/router";
 import {Header, Back, Content} from "@components/Header/Header";
 import {Detail} from "@components/Detail/Detail";
+import {Strip} from "@components/Strip/Strip";
 
 export default function Articles() {
   const router = useRouter();
@@ -24,6 +25,8 @@ export default function Articles() {
   
           <Detail />
         </main>
+  
+        <Strip text={'Swipe Down'} content={4} />
       </>
   )
 }

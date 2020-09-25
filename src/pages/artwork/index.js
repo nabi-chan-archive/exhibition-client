@@ -1,6 +1,7 @@
 import React from 'react'
 import {Header, Menu} from "@components/Header/Header";
 import { Artworks } from "@components/Artworks/Artworks";
+import {Strip} from "@components/Strip/Strip";
 
 export default function Artworks() {
   return (
@@ -12,6 +13,8 @@ export default function Artworks() {
           
           <Artworks />
         </main>
+  
+        <Strip text={'Swipe Down'} content={4} />
       </>
   )
 }
