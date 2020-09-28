@@ -5,7 +5,7 @@ import {Header, Back, Content} from "@components/Header/Header";
 import {Detail} from "@components/Detail/Detail";
 import {Strip} from "@components/Strip/Strip";
 
-export default function Articles() {
+export default function ArticlePage() {
   const router = useRouter();
   const {post_id} = router.query
   

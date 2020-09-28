@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Header, Menu } from '@components/Header/Header'
 import {Strip} from "@components/Strip/Strip";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Head>

@@ -3,7 +3,7 @@ import {Header, Menu} from "@components/Header/Header";
 import { Artworks } from "@components/Artworks/Artworks";
 import {Strip} from "@components/Strip/Strip";
 
-export default function Artworks() {
+export default function ArtworksPage() {
   return (
       <>
         <main>
