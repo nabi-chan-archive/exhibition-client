@@ -7,6 +7,7 @@ export default function HomePage() {
   return (
     <>
       <Head>
+        <title>20`21 웹 아카이브전 무균전시 : 새 시대 새 빛</title>
       </Head>
 
       <main>
