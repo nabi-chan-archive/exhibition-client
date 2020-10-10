@@ -1,4 +1,5 @@
 import React from 'react'
+import {shuffle} from "@utils/utils";
 import {Header, Menu} from "@components/Header/Header";
 import { Artworks } from "@components/Artworks/Artworks";
 import {Strip} from "@components/Strip/Strip";
@@ -26,7 +27,7 @@ export default function ArtworksPage({artworks}) {
 
 ArtworksPage.getInitialProps = async ctx => {
   return {
-    artworks: [
+    artworks: shuffle([
       {
         id: 1,
         type: 'photography',
@@ -105,6 +106,6 @@ ArtworksPage.getInitialProps = async ctx => {
         img_src: 'http://placehold.it/1920x1080',
         title: 'test'
       }
-    ]
+    ])
   }
 }
