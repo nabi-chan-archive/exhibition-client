@@ -7,43 +7,19 @@
 }
 
 .container {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 2vw;
 	flex-wrap: wrap;
-	padding: 5vw 1vw;
+	margin: 0 auto;
+	width: 90vw;
+	max-width: 1336px;
 	
-	// PC UI (1 x 4 / 2vw x 2vw / 1vw per line)
 	.column {
-		box-sizing: border-box;
-		flex: 1 0 25%;
-		padding: 0 1vw;
+		text-align: center;
 		
 		.row {
-			padding: 1vw 0;
-		}
-	}
-	
-	// mobile UI (2 x 2 / 4vw x 4vw / 2vw per line)
-	@include mobile {
-		padding: 5vw 2vw;
-		
-		.column {
-			width: 100%;
-			flex: none;
-			padding: 0 2vw;
-			
-			.row {
-				padding: 2vw 0;
-			}
-			
-		}
-	}
-	
-	// iphone UI (4 x 1 / inherit)
-	@include iphone {
-		.column {
-			.row {
-			
-			}
+			margin-bottom: 2vw;
 		}
 	}
 }
