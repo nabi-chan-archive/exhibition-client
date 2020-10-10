@@ -2,12 +2,10 @@
 @import "@styles/_mixin";
 
 .Header {
-	padding: 5vw 4vw;
+	padding: 3vw;
 	box-sizing: border-box;
-	//position: fixed;
 	top: 0;
 	left: 0;
-	height: 100vh;
 	
 	.title {
 		font-size: 2.2vw;
@@ -30,6 +28,7 @@
 	
 	.menu {
 		line-height: 1.2;
+		margin-bottom: 0;
 		
 		.category {
 			list-style: none;

@@ -6,15 +6,6 @@ body {
 	background-color: $page-bg-color;
 }
 
-main {
-	display: grid;
-	grid-template-columns: 2fr 8fr;
-	
-	@include mobile {
-		grid-template-columns: 1fr;
-	}
-}
-
 a {
 	text-decoration: none;
 	color: inherit;
