@@ -20,14 +20,14 @@ function Column({index, artwork}) {
   )
 }
 
-export function Artworks({artwork}) {
+export function Artworks({artwork, type}) {
   return (
       <section className={css.container}>
         {[0, 1, 2].map((i) => (
             <Column
                 index={i}
                 key={i}
-                artwork={artwork}
+                artwork={artwork.filter(i => !type ? true : i.type === type)}
             />
         ))}
       </section>

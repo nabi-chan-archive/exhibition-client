@@ -15,10 +15,10 @@ export function Menu() {
   
         <ul className={classcat([css.category, isOpened && css.active])}>
           <li>
-            <Link href="/photography"><a>photography</a></Link>
+            <Link href="/artwork?type=photography"><a>photography</a></Link>
           </li>
           <li>
-            <Link href="/poster"><a>poster</a></Link>
+            <Link href="/artwork?type=poster"><a>poster</a></Link>
           </li>
         </ul>
       </div>

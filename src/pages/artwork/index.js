@@ -3,9 +3,13 @@ import {shuffle} from "@utils/utils";
 import {Header, Menu} from "@components/Header/Header";
 import { Artworks } from "@components/Artworks/Artworks";
 import {Strip} from "@components/Strip/Strip";
+import {useRouter} from "next/router";
 import Head from "next/head";
 
 export default function ArtworksPage({artworks}) {
+  const route = useRouter();
+  const {type} = route.query;
+  
   return (
       <>
         <Head>
@@ -17,7 +21,7 @@ export default function ArtworksPage({artworks}) {
             <Menu />
           </Header>
           
-          <Artworks artwork={artworks} />
+          <Artworks artwork={artworks} type={type} />
         </main>
   
         <Strip text={'Swipe Down'} content={4} />
@@ -60,7 +64,7 @@ ArtworksPage.getInitialProps = async ctx => {
       },
       {
         id: 6,
-        type: 'poster',
+        type: 'photography',
         img_src: 'http://placehold.it/1920x1080',
         title: 'test'
       },
@@ -72,13 +76,13 @@ ArtworksPage.getInitialProps = async ctx => {
       },
       {
         id: 8,
-        type: 'poster',
+        type: 'photography',
         img_src: 'http://placehold.it/1920x1080',
         title: 'test'
       },
       {
         id: 9,
-        type: 'poster',
+        type: 'photography',
         img_src: 'http://placehold.it/1920x1080',
         title: 'test'
       },
@@ -90,19 +94,19 @@ ArtworksPage.getInitialProps = async ctx => {
       },
       {
         id: 11,
-        type: 'poster',
+        type: 'photography',
         img_src: 'http://placehold.it/1920x1080',
         title: 'test'
       },
       {
         id: 12,
-        type: 'poster',
+        type: 'photography',
         img_src: 'http://placehold.it/1920x1080',
         title: 'test'
       },
       {
         id: 13,
-        type: 'poster',
+        type: 'photography',
         img_src: 'http://placehold.it/1920x1080',
         title: 'test'
       }
