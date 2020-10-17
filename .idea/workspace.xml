@@ -12,10 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f7e56050-8391-4c29-9005-ec2e5b98587d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/Artworks/Artworks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/Artworks/Artworks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/components/Artworks/artworks.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/Artworks/artworks.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/Header/header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/Header/header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/Strip/strip.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/Strip/strip.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +61,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.18.3" />
-    <property name="javascript.nodejs.core.library.typings.version" value="12.12.55" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.22.1" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.40" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -112,6 +110,7 @@
       <workItem from="1600246613436" duration="4655000" />
       <workItem from="1600272496516" duration="187000" />
       <workItem from="1600323841830" duration="10000" />
+      <workItem from="1602947810926" duration="1015000" />
     </task>
     <task id="LOCAL-00001" summary=":heavy_plus_sign: classCat 라이브러리를 추가하라">
       <created>1599434370361</created>
@@ -167,30 +166,38 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="793" y="511" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog/0.0.1920.1200/-348.-1440.2560.1440@0.0.1920.1200" timestamp="1599434493287" />
-    <state width="1268" height="295" key="GridCell.Tab.0.bottom" timestamp="1600313400397">
-      <screen x="-348" y="-1440" width="2560" height="1440" />
+    <state width="1899" height="344" key="GridCell.Tab.0.bottom" timestamp="1602947902520">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
+    <state width="1899" height="344" key="GridCell.Tab.0.bottom/-1440.-1360.1440.2560/0.-1440.2560.1440/0.0.1920.1200@0.0.1920.1200" timestamp="1602947902520" />
     <state width="1268" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1200/-348.-1440.2560.1440@-348.-1440.2560.1440" timestamp="1600313400397" />
     <state width="949" height="238" key="GridCell.Tab.0.bottom/0.0.1920.1200/-348.-1440.2560.1440@0.0.1920.1200" timestamp="1599434762533" />
     <state width="1268" height="295" key="GridCell.Tab.0.bottom/0.23.1920.1177/-348.-1417.2560.1417@-348.-1417.2560.1417" timestamp="1599979391685" />
-    <state width="1268" height="295" key="GridCell.Tab.0.center" timestamp="1600313400396">
-      <screen x="-348" y="-1440" width="2560" height="1440" />
+    <state width="1899" height="344" key="GridCell.Tab.0.center" timestamp="1602947902517">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
+    <state width="1899" height="344" key="GridCell.Tab.0.center/-1440.-1360.1440.2560/0.-1440.2560.1440/0.0.1920.1200@0.0.1920.1200" timestamp="1602947902517" />
     <state width="1268" height="295" key="GridCell.Tab.0.center/0.0.1920.1200/-348.-1440.2560.1440@-348.-1440.2560.1440" timestamp="1600313400396" />
     <state width="949" height="238" key="GridCell.Tab.0.center/0.0.1920.1200/-348.-1440.2560.1440@0.0.1920.1200" timestamp="1599434762532" />
     <state width="1268" height="295" key="GridCell.Tab.0.center/0.23.1920.1177/-348.-1417.2560.1417@-348.-1417.2560.1417" timestamp="1599979391681" />
-    <state width="1268" height="295" key="GridCell.Tab.0.left" timestamp="1600313400395">
-      <screen x="-348" y="-1440" width="2560" height="1440" />
+    <state width="1899" height="344" key="GridCell.Tab.0.left" timestamp="1602947902515">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
+    <state width="1899" height="344" key="GridCell.Tab.0.left/-1440.-1360.1440.2560/0.-1440.2560.1440/0.0.1920.1200@0.0.1920.1200" timestamp="1602947902515" />
     <state width="1268" height="295" key="GridCell.Tab.0.left/0.0.1920.1200/-348.-1440.2560.1440@-348.-1440.2560.1440" timestamp="1600313400395" />
     <state width="949" height="238" key="GridCell.Tab.0.left/0.0.1920.1200/-348.-1440.2560.1440@0.0.1920.1200" timestamp="1599434762531" />
     <state width="1268" height="295" key="GridCell.Tab.0.left/0.23.1920.1177/-348.-1417.2560.1417@-348.-1417.2560.1417" timestamp="1599979391680" />
-    <state width="1268" height="295" key="GridCell.Tab.0.right" timestamp="1600313400397">
-      <screen x="-348" y="-1440" width="2560" height="1440" />
+    <state width="1899" height="344" key="GridCell.Tab.0.right" timestamp="1602947902518">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
+    <state width="1899" height="344" key="GridCell.Tab.0.right/-1440.-1360.1440.2560/0.-1440.2560.1440/0.0.1920.1200@0.0.1920.1200" timestamp="1602947902518" />
     <state width="1268" height="295" key="GridCell.Tab.0.right/0.0.1920.1200/-348.-1440.2560.1440@-348.-1440.2560.1440" timestamp="1600313400397" />
     <state width="949" height="238" key="GridCell.Tab.0.right/0.0.1920.1200/-348.-1440.2560.1440@0.0.1920.1200" timestamp="1599434762533" />
     <state width="1268" height="295" key="GridCell.Tab.0.right/0.23.1920.1177/-348.-1417.2560.1417@-348.-1417.2560.1417" timestamp="1599979391682" />
+    <state x="548" y="347" key="IDE.errors.dialog" timestamp="1602947874467">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="548" y="347" key="IDE.errors.dialog/-1440.-1360.1440.2560/0.-1440.2560.1440/0.0.1920.1200@0.0.1920.1200" timestamp="1602947874467" />
     <state x="775" y="233" key="SettingsEditor" timestamp="1599434273503">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
