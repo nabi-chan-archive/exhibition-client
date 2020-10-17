@@ -12,8 +12,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f7e56050-8391-4c29-9005-ec2e5b98587d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/Artworks/artworks.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/Artworks/artworks.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/Strip/strip.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/Strip/strip.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +76,21 @@
       <recent name="$PROJECT_DIR$/src/pages/artwork" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="" />
+          <option name="buildCliOptions" value="" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -91,6 +103,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -110,7 +123,7 @@
       <workItem from="1600246613436" duration="4655000" />
       <workItem from="1600272496516" duration="187000" />
       <workItem from="1600323841830" duration="10000" />
-      <workItem from="1602947810926" duration="1015000" />
+      <workItem from="1602947810926" duration="1968000" />
     </task>
     <task id="LOCAL-00001" summary=":heavy_plus_sign: classCat 라이브러리를 추가하라">
       <created>1599434370361</created>
