@@ -60,8 +60,12 @@
 					pointer-events: none;
 				}
 				
-				li:nth-child(1) {
+				li:nth-child(2) {
 					transition-delay: .15s;
+				}
+				
+				li:nth-child(1) {
+					transition-delay: .3s;
 				}
 			}
 			
@@ -71,6 +75,10 @@
 					opacity: 1;
 					
 					&:nth-child(2) {
+						transition-delay: .15s;
+					}
+					
+					&:nth-child(3) {
 						transition-delay: .3s;
 					}
 				}
