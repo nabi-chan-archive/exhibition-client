@@ -6,6 +6,7 @@ import {Comment} from "@components/Comment/Comment";
 import {Header, Back} from "@components/Header/Header";
 import {Detail} from "@components/Detail/Detail";
 import {Strip} from "@components/Strip/Strip";
+import {query} from "@utils/query";
 
 export default function ArticlePage({artwork}) {
   const {
@@ -78,18 +79,9 @@ export default function ArticlePage({artwork}) {
 }
 
 ArticlePage.getInitialProps = async ctx => {
-  console.log(ctx.query.post_id)
+  const res = await query({
+    query: `{ artwork(id : ${ctx.query.post_id}) { title summary published, image_src, author { name, position } } }`
+  })
   
-  return {
-    "artwork": {
-      "title": "테스트",
-      "summary": "대충 있어보이는 표현들",
-      "published": "2020-10-04T11:47:50.000Z",
-      "image_src": "https://placehold.it/1920x1080",
-      "author": {
-        "name": "유나비",
-        "position": "개발자"
-      }
-    }
-  }
+  return res.data
 }
