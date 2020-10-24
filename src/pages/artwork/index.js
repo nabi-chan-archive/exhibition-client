@@ -5,6 +5,7 @@ import { Artworks } from "@components/Artworks/Artworks";
 import {Strip} from "@components/Strip/Strip";
 import {useRouter} from "next/router";
 import Head from "next/head";
+import { query } from "@utils/query";
 
 export default function ArtworksPage({artworks}) {
   const route = useRouter();
@@ -30,86 +31,11 @@ export default function ArtworksPage({artworks}) {
 }
 
 ArtworksPage.getInitialProps = async ctx => {
+  const res = await query({
+    query: '{ artworks { post_id, type, image_src, title } }'
+  })
+  
   return {
-    artworks: shuffle([
-      {
-        id: 1,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      },
-      {
-        id: 2,
-        type: 'poster',
-        img_src: 'http://placehold.it/300x400',
-        title: 'test'
-      },
-      {
-        id: 3,
-        type: 'poster',
-        img_src: 'http://placehold.it/300x400',
-        title: 'test'
-      },
-      {
-        id: 4,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      },
-      {
-        id: 5,
-        type: 'poster',
-        img_src: 'http://placehold.it/300x400',
-        title: 'test'
-      },
-      {
-        id: 6,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      },
-      {
-        id: 7,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      },
-      {
-        id: 8,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      },
-      {
-        id: 9,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      },
-      {
-        id: 10,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      },
-      {
-        id: 11,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      },
-      {
-        id: 12,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      },
-      {
-        id: 13,
-        type: 'photography',
-        img_src: 'http://placehold.it/1920x1080',
-        title: 'test'
-      }
-    ])
+    artworks: shuffle(res.data.artworks)
   }
 }
