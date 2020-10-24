@@ -4,6 +4,10 @@
 body {
 	color: $page-text-color;
 	background-color: $page-bg-color;
+	
+	main {
+		margin-bottom: 7vh;
+	}
 }
 
 a {
