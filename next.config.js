@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack')
 const isBuild = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -8,4 +9,8 @@ module.exports = {
   },
   env: {
   },
+  webpack: config => {
+    config.plugins.push(new Dotenv({silent: true}));
+    return config
+  }
 };
