@@ -13,6 +13,11 @@ body {
 		&:not(.list) {
 			display: grid;
 			grid-template-columns: 2fr 8fr;
+			
+			header {
+				position: sticky;
+				height: 100vh;
+			}
 		}
 		
 		@include mobile {
