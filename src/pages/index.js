@@ -10,11 +10,15 @@ export default function HomePage() {
         <title>20`21 웹 아카이브전 무균전시 : 새 시대 새 빛</title>
       </Head>
 
-      <main>
+      <main id="main">
         <Header>
           <Menu />
         </Header>
-        
+  
+        <img
+            src="https://placehold.it/3000x4000"
+            alt="img_big"
+        />
       </main>
   
       <Strip text={'20`21 Web Archive Exhibition 무균전시 - Exhibition of STERILE'} content={1} />

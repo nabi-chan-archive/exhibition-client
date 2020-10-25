@@ -6,7 +6,9 @@ body {
 	background-color: $page-bg-color;
 	
 	main {
-		margin-bottom: 7vh;
+		&:not(#main) {
+			margin-bottom: 5vh;
+		}
 		
 		&:not(.list) {
 			display: grid;
@@ -15,6 +17,10 @@ body {
 		
 		@include mobile {
 			display: block !important;
+		}
+		
+		img {
+			width: 100%;
 		}
 	}
 }
