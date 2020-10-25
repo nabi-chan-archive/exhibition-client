@@ -7,6 +7,15 @@ body {
 	
 	main {
 		margin-bottom: 7vh;
+		
+		&:not(.list) {
+			display: grid;
+			grid-template-columns: 2fr 8fr;
+		}
+		
+		@include mobile {
+			display: block !important;
+		}
 	}
 }
 
