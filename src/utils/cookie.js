@@ -1,5 +1,7 @@
-export const setCookie = (name, value, day) => {
-  document.cookie = `${name}=${value}; expires=${day};path=/admin;SameSite=None; Secure`
+export const setCookie = (name, value, second) => {
+  const expired = new Date(Date.now() + second * 1000);
+  
+  document.cookie = `${name}=${value}; expires=${expired.toUTCString()};path=/admin;SameSite=None; Secure`
 }
 
 export const getCookie = (name) => {
