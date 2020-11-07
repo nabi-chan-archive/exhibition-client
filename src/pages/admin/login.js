@@ -29,7 +29,12 @@ export default function AdminLoginPage() {
     const res = await query({
       query: `{ login(input: {email: "${formData.email}", password: "${sha512(formData.password)}"}) { token { accessToken, refreshToken} } }`
     });
-    
+
+    if (!res.data.login) {
+      alert('계정 정보를 찾을 수 없습니다.');
+      return;
+    }
+
     const {accessToken, refreshToken} = res.data.login.token
     
     // 12시간
