@@ -8,25 +8,38 @@ const ModifyPostPage = ({ artwork, post_id }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!artwork) {
+    if (!artwork.type) {
       alert("작품을 찾을 수 없습니다!");
       router.replace("/admin");
     }
-  }, []);
+  }, [post_id]);
+
+  if (artwork.type) {
+    return (
+      <>
+        <Head>
+          <title>{post_id} 번 아트워크 수정</title>
+        </Head>
   
-  return (
-    <>
-      <Head>
-        <title>{post_id} 번 아트워크 수정</title>
-      </Head>
-
-      <div>
-        <h1 style={{ textAlign: "center" }}>{post_id} 번 아트워크 수정</h1>
-
-        <ArtworkForm artwork={artwork} onSubmit={(e) => console.log(e)} />
-      </div>
-    </>
-  );
+        <div>
+          <h1 style={{ textAlign: "center" }}>{post_id} 번 아트워크 수정</h1>
+  
+          <ArtworkForm artwork={artwork} onSubmit={(e) => console.log(e)} />
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Head>
+          <title>{post_id} 번 아트워크를 찾을 수 없습니다.</title>
+        </Head>
+  
+        <div>
+        </div>
+      </>
+    )
+  }
 };
 
 ModifyPostPage.getInitialProps = async ({ query, apolloClient }) => {
