@@ -1,11 +1,11 @@
 language: node_js
-node_js: 
+node_js:
   - '10'
 before_install:
   - rm -rf node_modules
-  - zip -r app *
+  - zip -r exhibition-client *
   - mkdir -p deploy
-  - mv app.zip deploy/app.zip
+  - mv exhibition-client.zip deploy/exhibition-client.zip
 deploy:
   # aws S3
   - provider: s3
@@ -24,7 +24,7 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     bucket: $AWS_BUCKET_NAME
-    key: app.zip
+    key: exhibition-client.zip
     bundle_type: zip
     application: pinot-ci-cd-app
     deployment_group: pinot-ci-cd-group
