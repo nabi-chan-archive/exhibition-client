@@ -1,0 +1,51 @@
+@import "@styles/_mixin";
+@import "@styles/_variable";
+
+.strip {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	background-color: $page-hg-color;
+	color: #000;
+	
+	ul {
+		display: flex;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		animation: content 10s linear infinite;
+		
+		@for $i from 1 through 10 {
+			li:first-child:nth-last-child(#{$i}),
+			li:first-child:nth-last-child(#{$i}) ~ li {
+				min-width: 1 / $i * 100vw;
+			}
+		}
+		
+		li {
+			padding: 3vw;
+			text-align: center;
+			font-size: 3vw;
+			//height: 3vw;
+			font-weight: 700;
+			text-transform: uppercase;
+			white-space: nowrap;
+		}
+	}
+	
+	@include mobile {
+		display: flex;
+	}
+}
+
+@keyframes content {
+	0% {
+		transform: translateX(0);
+	}
+	
+	100% {
+		transform: translateX(-100%);
+	}
+}

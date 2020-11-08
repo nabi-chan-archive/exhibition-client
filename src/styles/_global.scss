@@ -1,0 +1,41 @@
+@import "variable";
+@import "mixin";
+
+body {
+	color: $page-text-color;
+	background-color: $page-bg-color;
+	
+	main {
+		&:not(#main) {
+			margin-bottom: 5vh;
+		}
+		
+		&:not(.list) {
+			display: grid;
+			grid-template-columns: 2fr 8fr;
+			
+			header {
+				position: sticky;
+				height: 100vh;
+			}
+		}
+		
+		@include mobile {
+			display: block !important;
+		}
+		
+		img {
+			width: 100%;
+		}
+	}
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+p, h1, h2, h3, h4, h5 {
+	margin: 0;
+	word-break: break-all;
+}

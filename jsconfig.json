@@ -1,6 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": "src/"
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/views/components/*"],
+      "@utils/*": ["src/utils/*"],
+      "@styles/*": ["src/styles/*"],
+      "@gql/*": ["src/gql/*"]
+    }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
