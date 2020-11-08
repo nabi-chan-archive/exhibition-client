@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
-import { gql, useMutation } from '@apollo/client';
-
-const UPLOADIMAGE = gql`
-  mutation upload_image($file: Upload!) {
-    upload_image(file: $file) {
-      filename
-    }
-  }
-`;
+import { UPLOADIMAGE } from "@gql/mutation/upload_image";
+import { useMutation } from '@apollo/client';
 
 const ArtworkForm = ({ artwork, onSubmit }) => {
   const [data, setData] = useState({});
