@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Head from "next/head";
 import {useRouter} from "next/router";
 import {NewsArticleJsonLd, NextSeo} from "next-seo";
@@ -16,9 +16,22 @@ export default function ArticlePage({artwork}) {
     summary,
     image_src
   } = artwork;
-  
+
   const route = useRouter();
-  
+
+  useEffect(() => {
+    if (!title) {
+      alert('아트워크를 찾을 수 없습니다!');
+      route.back()
+    }
+  }, [])
+
+  if (!title) {
+    return (
+        <main />
+    )
+  }
+
   return (
       <>
         <Head>
@@ -63,16 +76,16 @@ export default function ArticlePage({artwork}) {
             keywords="무균전시,디자이너,개발자,전시회,온라인,코로나,온라인전시,포스터,웹전시,아카이브,사진작가,바이닐,Exhibition,Designer,Developer,Online,COVID-19,Event,Archive,Photographer,Vinyl"
             body={summary}
         />
-        
+
         <main>
           <Header>
             <Back/>
             <Comment data={artwork}/>
           </Header>
-          
+
           <Detail data={artwork}/>
         </main>
-        
+
         <Strip text={'Swipe Down'} content={4}/>
       </>
   )
@@ -82,6 +95,6 @@ ArticlePage.getInitialProps = async ctx => {
   const res = await query({
     query: `{ artwork(id : ${ctx.query.post_id}) { title summary published, image_src, author { name, position } } }`
   })
-  
+
   return res.data
 }
