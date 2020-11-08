@@ -47,6 +47,7 @@ const ArtworkForm = ({ artwork, onSubmit }) => {
 
   const handleChange = ({ target }) => {
     setData({
+      ...data,
       [target.name]: target.value,
     });
   };
