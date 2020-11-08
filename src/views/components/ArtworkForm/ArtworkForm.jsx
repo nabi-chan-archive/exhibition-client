@@ -24,15 +24,17 @@ const ArtworkForm = ({ artwork, onSubmit }) => {
       files: [file],
     },
   }) => {
-    console.log(file);
-
-    const res = await uploadImage({
+    const {
+      data: { upload_image },
+    } = await uploadImage({
       variables: {
         file,
       },
     });
+    console.log(`upload success😀 ${upload_image.filename}`);
+  };
 
-    console.log(res.filename);
+  
   };
 
   const handleChange = ({ target }) => {
