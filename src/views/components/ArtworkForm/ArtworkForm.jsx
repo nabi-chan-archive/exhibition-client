@@ -1,16 +1,38 @@
 import React, { useState } from 'react';
+import { gql, useMutation } from '@apollo/client';
+
+const UPLOADIMAGE = gql`
+  mutation upload_image($file: Upload!) {
+    upload_image(file: $file) {
+      filename
+    }
+  }
+`;
 
 const ArtworkForm = ({ artwork, onSubmit }) => {
   const [data, setData] = useState({});
+
+  const [uploadImage] = useMutation(UPLOADIMAGE);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(data);
   };
 
-  const handleFileUpload = async ({ target }) => {
-    const file = target.files[0];
-    console.log(file)
+  const handleFileUpload = async ({
+    target: {
+      files: [file],
+    },
+  }) => {
+    console.log(file);
+
+    const res = await uploadImage({
+      variables: {
+        file,
+      },
+    });
+
+    console.log(res.filename);
   };
 
   const handleChange = ({ target }) => {
