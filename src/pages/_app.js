@@ -1,9 +1,11 @@
 import React from 'react'
 import Head from "next/head";
-import {NextSeo} from "next-seo";
+import { NextSeo } from "next-seo";
+import { ApolloProvider } from '@apollo/client';
+import withApolloClient from "@gql/client";
 import '@styles/main.scss';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, apollo }) {
   return (
       <>
         <Head>
@@ -35,9 +37,20 @@ function MyApp({ Component, pageProps }) {
             handle: "@pinot_kim"
           }}
         />
-        <Component {...pageProps} />
+      
+        <ApolloProvider client={apollo}>
+          <Component {...pageProps} />
+        </ApolloProvider>
       </>
   )
 }
 
-export default MyApp
+MyApp.getInitialProps = async ({ ctx, Component }) => {
+  const pageProps = await Component.getInitialProps?.(ctx);
+
+  return {
+    pageProps
+  }
+}
+
+export default withApolloClient(MyApp)

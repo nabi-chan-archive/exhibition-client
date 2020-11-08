@@ -3,8 +3,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { getCookie } from "@utils/cookie";
 import { NextSeo } from "next-seo";
-import { query } from "@utils/query";
 import Link from "next/link";
+import { GETARTWORKS } from '@gql/query/artwork';
 
 export default function AdminHomePage({ artworks }) {
   const router = useRouter();
@@ -62,12 +62,14 @@ export default function AdminHomePage({ artworks }) {
   );
 }
 
-AdminHomePage.getInitialProps = async (ctx) => {
-  const res = await query({
-    query: "{ artworks { post_id, type, image_src, title, author { name } } }",
+AdminHomePage.getInitialProps = async ({ apolloClient }) => {
+  const {
+    data: { artworks },
+  } = await apolloClient.query({
+    query: GETARTWORKS,
   });
 
   return {
-    artworks: res.data.artworks,
+    artworks,
   };
 };

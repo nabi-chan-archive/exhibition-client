@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { query } from "@utils/query";
 import { ArtworkForm } from "@components/ArtworkForm/ArtworkForm";
+import { GETARTWORK } from '@gql/query/artwork';
 
 const ModifyPostPage = ({ artwork, post_id }) => {
   const router = useRouter();
@@ -13,10 +13,7 @@ const ModifyPostPage = ({ artwork, post_id }) => {
       router.replace("/admin");
     }
   }, []);
-    
-    
-  console.log(artwork)
-
+  
   return (
     <>
       <Head>
@@ -32,27 +29,20 @@ const ModifyPostPage = ({ artwork, post_id }) => {
   );
 };
 
-ModifyPostPage.getInitialProps = async (ctx) => {
-  const { post_id } = ctx.query;
+ModifyPostPage.getInitialProps = async ({ query, apolloClient }) => {
+  const { post_id } = query;
 
-  const { data } = await query({
-    query: `{
-              artwork(id: ${post_id}) {
-                  type
-                  title
-                  summary
-                  published
-                  image_src
-                  author {
-                      name
-                      position
-                  }
-              }
-          }`,
+  const {
+    data: { artwork },
+  } = await apolloClient.query({
+    query: GETARTWORK,
+    variables: {
+      post_id,
+    },
   });
 
   return {
-    artwork: data.artwork,
+    artwork,
     post_id,
   };
 };

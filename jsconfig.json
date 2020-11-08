@@ -4,7 +4,8 @@
     "paths": {
       "@components/*": ["src/views/components/*"],
       "@utils/*": ["src/utils/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@gql/*": ["src/gql/*"]
     }
   },
   "include": [
