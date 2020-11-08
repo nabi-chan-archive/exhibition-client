@@ -5,7 +5,7 @@ import {Artworks} from "@components/Artworks/Artworks";
 import {Strip} from "@components/Strip/Strip";
 import {useRouter} from "next/router";
 import Head from "next/head";
-import {query} from "@utils/query";
+import {GETARTWORKS} from "@gql/query/artwork";
 
 export default function ArtworksPage({artworks}) {
 	const route = useRouter();
@@ -30,12 +30,14 @@ export default function ArtworksPage({artworks}) {
 	)
 }
 
-ArtworksPage.getInitialProps = async ctx => {
-	const res = await query({
-		query: '{ artworks { post_id, type, image_src, title } }'
-	})
+ArtworksPage.getInitialProps = async ({apolloClient}) => {
+	const {
+		data: { artworks },
+	} = await apolloClient.query({
+		query: GETARTWORKS,
+	});
 
 	return {
-		artworks: shuffle(res.data.artworks)
+		artworks: shuffle(artworks)
 	}
 }
