@@ -29,7 +29,7 @@ const ArtworkForm = ({ artwork, onSubmit }) => {
           file,
         },
       });
-      
+
       handleChange({
         target: {
           name: 'image_src',
@@ -126,7 +126,7 @@ const ArtworkForm = ({ artwork, onSubmit }) => {
             <td>
               <input
                 type="text"
-                name="name"
+                name="author"
                 defaultValue={artwork.author.name}
                 onChange={handleChange}
               />
