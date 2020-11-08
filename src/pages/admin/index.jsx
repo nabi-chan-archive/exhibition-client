@@ -26,6 +26,9 @@ export default function AdminHomePage({ artworks }) {
 
       <div>
         <h1 style={{margin: "30px 0", textAlign: 'center'}}>아트워크 관리하기</h1>
+        <Link href={`/admin/artwork/new`}>
+          아트워크 추가하기
+        </Link>
         <table style={{ width: "100%", textAlign: "center" , borderSpacing: "20px"}}>
           <thead>
             <tr style={{position: "sticky", top: 0, left: 0, right: 0}}>
