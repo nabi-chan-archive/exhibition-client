@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { ArtworkForm } from "@components/ArtworkForm/ArtworkForm";
 import { GETARTWORK } from '@gql/query/artwork';
+import { REMOVEARTWORK } from "@gql/mutation/RemoveArtwork";
 import { MODIFYARTWORK } from "@gql/mutation/ModifyArtwork";
 import { useMutation } from '@apollo/client';
 
@@ -10,6 +11,7 @@ const ModifyPostPage = ({ artwork, post_id }) => {
   const router = useRouter();
 
   const [modifyArtwork] = useMutation(MODIFYARTWORK);
+  const [removeArtwork] = useMutation(REMOVEARTWORK);
 
   const handleSubmit = async (input) => {
     try {
@@ -23,6 +25,27 @@ const ModifyPostPage = ({ artwork, post_id }) => {
       });
 
       alert(`${data.modify_artwork}개의 내용이 수정되었습니다.`);
+      await router.replace("/admin");
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  const handleDelete = async () => {
+    const check = confirm(`정말로 ${artwork.title}를 삭제하시겠습니까?`);
+
+    if (!check) return
+
+    try {
+      const {
+        data
+      } = await removeArtwork({
+        variables: {
+          id: post_id,
+        }
+      });
+
+      alert(`아트워크가 삭제되었습니다.`);
       await router.replace("/admin");
     } catch (e) {
       console.error(e)
@@ -47,6 +70,10 @@ const ModifyPostPage = ({ artwork, post_id }) => {
           <h1 style={{ textAlign: "center" }}>아트워크 정보 수정</h1>
 
           <ArtworkForm artwork={artwork} onSubmit={handleSubmit} />
+
+          <button onClick={handleDelete}>
+            삭제하기
+          </button>
         </div>
       </>
     );
