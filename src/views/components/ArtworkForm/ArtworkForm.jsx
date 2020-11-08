@@ -2,7 +2,16 @@ import React, { useState } from 'react';
 import { UPLOADIMAGE } from "@gql/mutation/upload_image";
 import { useMutation } from '@apollo/client';
 
-const ArtworkForm = ({ artwork, onSubmit }) => {
+const ArtworkForm = ({ artwork = {
+  type: "poster",
+  title: "",
+  summary: "",
+  image_src: "",
+  author: {
+    name: "",
+    position: ""
+  }
+}, onSubmit }) => {
   const [data, setData] = useState({});
 
   const [uploadImage] = useMutation(UPLOADIMAGE);
