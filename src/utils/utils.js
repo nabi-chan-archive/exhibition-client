@@ -6,3 +6,13 @@ export function shuffle(arr) {
   }
   return array;
 }
+
+export const base64 = {
+	encode: (plainText) => Buffer.from(plainText, 'utf8').toString('base64'),
+	decode: (base64Text) => Buffer.from(base64Text, 'base64').toString('utf8'),
+};
+
+export const decodeToken = (token) => {
+  const data = token.split('.')[1];
+  return JSON.parse(base64.decode(data));
+}
