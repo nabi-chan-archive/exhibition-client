@@ -3,7 +3,7 @@ import { UPLOADIMAGE } from "@gql/mutation/upload_image";
 import { useMutation } from '@apollo/client';
 
 const ArtworkForm = ({ artwork = {
-  type: "poster",
+  type: "",
   title: "",
   summary: "",
   image_src: "",
@@ -87,8 +87,10 @@ const ArtworkForm = ({ artwork = {
                 name="type"
                 defaultValue={artwork.type}
                 onChange={handleChange}
+                required={true}
               >
-                <option value="photograpy">사진</option>
+                <option value="" defaultChecked={true} disabled={true}>분류를 선택하세요.</option>
+                <option value="photography">사진</option>
                 <option value="poster">포스터</option>
               </select>
             </td>
@@ -101,6 +103,7 @@ const ArtworkForm = ({ artwork = {
                 name="title"
                 defaultValue={artwork.title}
                 onChange={handleChange}
+                required={true}
               />
             </td>
           </tr>
@@ -111,6 +114,7 @@ const ArtworkForm = ({ artwork = {
                 name="summary"
                 defaultValue={artwork.summary}
                 onChange={handleChange}
+                required={true}
                 style={{
                   resize: 'vertical',
                 }}
@@ -127,7 +131,7 @@ const ArtworkForm = ({ artwork = {
                   width: '100%',
                 }}
               />
-              <input type="file" onChange={handleFileUpload} />
+              <input type="file" required={true} onChange={handleFileUpload} />
             </td>
           </tr>
           <tr>
@@ -138,6 +142,7 @@ const ArtworkForm = ({ artwork = {
                 name="author"
                 defaultValue={artwork.author.name}
                 onChange={handleChange}
+                required={true}
               />
             </td>
           </tr>
@@ -149,6 +154,7 @@ const ArtworkForm = ({ artwork = {
                 name="position"
                 defaultValue={artwork.author.position}
                 onChange={handleChange}
+                required={true}
               />
             </td>
           </tr>
