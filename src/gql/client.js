@@ -10,6 +10,10 @@ const refreshMiddleWare = new ApolloLink(async (operation, forward) => {
     return forward(operation);
   }
 
+  if (!getCookie('accessToken')) {
+    return forward(operation);
+  }
+
   const { exp } = decodeToken(getCookie('accessToken'));
   const now = new Date().getTime();
 
