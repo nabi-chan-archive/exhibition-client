@@ -17,18 +17,33 @@ const ArtworkForm = ({ artwork, onSubmit }) => {
       files: [file],
     },
   }) => {
-    const {
-      data: { upload_image },
-    } = await uploadImage({
-      variables: {
-        file,
-      },
-    });
-    console.log(`upload success😀 ${upload_image.filename}`);
+    try {
+      const {
+        data: {
+          upload_image: {
+            filename
+          }
+        },
+      } = await uploadImage({
+        variables: {
+          file,
+        },
+      });
+      
+      handleChange({
+        target: {
+          name: 'image_src',
+          value: filename
+        }
+      });
+
+      console.debug('파일 업로드 성공! ' + filename);
+    } catch (e) {
+      alert('파일 업로드에 실패했습니다 :(');
+      console.error(e);
+    }
   };
 
-  
-  };
 
   const handleChange = ({ target }) => {
     setData({
@@ -96,18 +111,13 @@ const ArtworkForm = ({ artwork, onSubmit }) => {
             <td>아트워크 파일</td>
             <td>
               <img
-                src={artwork.image_src}
+                src={data.image_src || artwork.image_src}
                 style={{
                   display: 'block',
                   width: '100%',
                 }}
               />
               <input type="file" onChange={handleFileUpload} />
-              <input
-                type="hidden"
-                name="image_src"
-                defaultValue={artwork.image_src}
-              />
             </td>
           </tr>
           <tr>
