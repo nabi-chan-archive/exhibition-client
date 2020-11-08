@@ -27,7 +27,9 @@ export default function AdminHomePage({ artworks }) {
       <div>
         <h1 style={{margin: "30px 0", textAlign: 'center'}}>아트워크 관리하기</h1>
         <Link href={`/admin/artwork/new`}>
-          아트워크 추가하기
+          <a>
+            아트워크 추가하기
+          </a>
         </Link>
         <table style={{ width: "100%", textAlign: "center" , borderSpacing: "20px"}}>
           <thead>
@@ -53,7 +55,9 @@ export default function AdminHomePage({ artworks }) {
                 </td>
                 <td style={{textAlign: 'center'}}>
                   <Link href={`/admin/artwork/modify/${_i.post_id}`}>
-                    관리하기
+                    <a>
+                      관리하기
+                    </a>
                   </Link>
                 </td>
               </tr>
