@@ -14,13 +14,13 @@ export default function HomePage() {
         <Header>
           <Menu />
         </Header>
-  
+
         <img
-            src="https://placehold.it/3000x4000"
+            src="https://exhibiton-2021-image.s3.ap-northeast-2.amazonaws.com/POSTER.jpg"
             alt="img_big"
         />
       </main>
-  
+
       <Strip text={'20`21 Web Archive Exhibition 무균전시 - Exhibition of STERILE'} content={1} />
     </>
   );
