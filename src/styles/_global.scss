@@ -4,6 +4,7 @@
 body {
 	color: $page-text-color;
 	background-color: $page-bg-color;
+	font-family: 'Noto Sans KR', sans-serif;
 	
 	main {
 		&:not(#main) {
