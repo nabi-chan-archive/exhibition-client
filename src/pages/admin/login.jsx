@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import Head from 'next/head';
-import {NextSeo} from 'next-seo'
-import {query} from "@utils/query";
 import {getCookie, setCookie} from "@utils/cookie";
 import {sha512} from "js-sha512";
 import {useRouter} from "next/router";
+import {LOGIN} from "@gql/query/Login";
+import {useLazyQuery} from "@apollo/client";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -23,19 +22,23 @@ export default function AdminLoginPage() {
     [target.name]: target.value
   });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const [loginQuery, {
+    data
+  }] = useLazyQuery(LOGIN)
 
-    const res = await query({
-      query: `{ login(input: {email: "${formData.email}", password: "${sha512(formData.password)}"}) { token { accessToken, refreshToken} } }`
-    });
-
-    if (!res.data.login) {
+  useEffect(() => {
+    if (data && !data.login) {
       alert('계정 정보를 찾을 수 없습니다.');
       return;
     }
 
-    const {accessToken, refreshToken} = res.data.login.token
+    if (!data) {
+      return
+    }
+
+    const { login } = data;
+
+    const {accessToken, refreshToken} = login.token
 
     // 12시간
     setCookie("accessToken", accessToken, 60 * 60 * 12);
@@ -43,15 +46,25 @@ export default function AdminLoginPage() {
     setCookie("refreshToken", refreshToken, 60 * 60 * 24 * 7);
 
     router.push('/admin')
+  }, [data])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const {email, password} = formData;
+
+    loginQuery({
+      variables: {
+        input: {
+          email,
+          password: sha512(password)
+        }
+      }
+    })
   }
 
   return (
       <>
-        <Head>
-          <title>20`21 웹 아카이브전 무균전시 : 로그인</title>
-          <NextSeo noindex={true}/>
-        </Head>
-
         <div>
           <form
               onSubmit={handleSubmit}

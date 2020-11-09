@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { getCookie } from "@utils/cookie";
-import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { GETARTWORKS } from '@gql/query/artwork';
 
@@ -21,13 +20,14 @@ export default function AdminHomePage({ artworks }) {
     <>
       <Head>
         <title>20`21 웹 아카이브전 무균전시 : 대시보드</title>
-        <NextSeo noindex={true} />
       </Head>
 
       <div>
         <h1 style={{margin: "30px 0", textAlign: 'center'}}>아트워크 관리하기</h1>
         <Link href={`/admin/artwork/new`}>
-          아트워크 추가하기
+          <a>
+            아트워크 추가하기
+          </a>
         </Link>
         <table style={{ width: "100%", textAlign: "center" , borderSpacing: "20px"}}>
           <thead>
@@ -53,7 +53,9 @@ export default function AdminHomePage({ artworks }) {
                 </td>
                 <td style={{textAlign: 'center'}}>
                   <Link href={`/admin/artwork/modify/${_i.post_id}`}>
-                    관리하기
+                    <a>
+                      관리하기
+                    </a>
                   </Link>
                 </td>
               </tr>
