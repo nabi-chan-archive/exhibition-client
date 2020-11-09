@@ -104,6 +104,7 @@ const ArtworkForm = ({ artwork = {
                 defaultValue={artwork.title}
                 onChange={handleChange}
                 required={true}
+                placeholder="작품명을 입력하세요."
               />
             </td>
           </tr>
@@ -118,6 +119,7 @@ const ArtworkForm = ({ artwork = {
                 style={{
                   resize: 'vertical',
                 }}
+                placeholder="작품 설명을 입력하세요."
               />
             </td>
           </tr>
@@ -144,6 +146,7 @@ const ArtworkForm = ({ artwork = {
                   style={{
                     display: 'block'
                   }}
+                  placeholder="이미지의 주소를 입력하세요."
               />
             </td>
           </tr>
@@ -156,6 +159,7 @@ const ArtworkForm = ({ artwork = {
                 defaultValue={artwork.author.name}
                 onChange={handleChange}
                 required={true}
+                placeholder="작가의 이름을 입력하세요"
               />
             </td>
           </tr>
@@ -168,6 +172,7 @@ const ArtworkForm = ({ artwork = {
                 defaultValue={artwork.author.position}
                 onChange={handleChange}
                 required={true}
+                placeholder="작가의 직책을 입력하세요."
               />
             </td>
           </tr>
