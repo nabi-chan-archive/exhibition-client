@@ -2,8 +2,10 @@
 @import "@styles/_mixin";
 
 .Header {
+	position: sticky;
 	top: 0;
 	left: 0;
+	height: 100vh;
 	padding: 3vw;
 	box-sizing: border-box;
 	
