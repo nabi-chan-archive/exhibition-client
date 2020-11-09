@@ -32,7 +32,7 @@
 		
 		.category {
 			list-style: none;
-			padding-left: 1.5vw;
+			padding: 0;
 			
 			li {
 				text-transform: uppercase;
@@ -107,9 +107,12 @@
 			align-items: center;
 			
 			.category {
+				display: flex;
+				align-items: center;
 				font-size: 2.5vw;
 				
 				li {
+					margin: 0 0 0 2vw !important;
 					transform: translate(-4%, 0);
 				}
 			}
