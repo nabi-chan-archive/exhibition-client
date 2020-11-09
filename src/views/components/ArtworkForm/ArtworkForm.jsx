@@ -125,13 +125,22 @@ const ArtworkForm = ({ artwork = {
             <td>아트워크 파일</td>
             <td>
               <img
-                src={data.image_src || artwork.image_src}
+                src={data.image_src || artwork.image_src || "404"}
                 style={{
                   display: 'block',
                   width: '100%',
                 }}
               />
               <input type="file" required={true} onChange={handleFileUpload} />
+              <input
+                  type="text"
+                  name="image_src"
+                  defaultValue={data.image_src || artwork.image_src}
+                  onChange={handleChange}
+                  style={{
+                    display: 'block'
+                  }}
+              />
             </td>
           </tr>
           <tr>
