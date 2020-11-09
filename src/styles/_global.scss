@@ -4,6 +4,7 @@
 body {
 	color: $page-text-color;
 	background-color: $page-bg-color;
+	font-family: 'Noto Sans KR', sans-serif;
 	
 	main {
 		&:not(#main) {
@@ -24,8 +25,9 @@ body {
 			display: block !important;
 		}
 		
-		img {
+		video {
 			width: 100%;
+			background: white;
 		}
 	}
 }

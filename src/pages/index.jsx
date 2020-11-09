@@ -14,13 +14,13 @@ export default function HomePage() {
         <Header>
           <Menu />
         </Header>
-  
-        <img
-            src="https://placehold.it/3000x4000"
-            alt="img_big"
-        />
+
+        <video autoPlay muted loop>
+          <source src="https://exhibiton-2021-image.s3.ap-northeast-2.amazonaws.com/POSTER.mp4" type="video/mp4" />
+          해당 브라우저에서는 video 태그를 지원하지 않습니다.
+        </video>
       </main>
-  
+
       <Strip text={'20`21 Web Archive Exhibition 무균전시 - Exhibition of STERILE'} content={1} />
     </>
   );
