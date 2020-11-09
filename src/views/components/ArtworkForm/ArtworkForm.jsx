@@ -126,16 +126,20 @@ const ArtworkForm = ({ artwork = {
             <td>
               <img
                 src={data.image_src || artwork.image_src || "404"}
+                alt="아트워크 이미지를 찾을 수 없습니다."
                 style={{
                   display: 'block',
-                  width: '100%',
+                  maxWidth: '402px',
+                  minHeight: '300px',
+                  maxHeight: '402px',
+                  objectFit: 'contain'
                 }}
               />
               <input type="file" required={true} onChange={handleFileUpload} />
               <input
                   type="text"
                   name="image_src"
-                  defaultValue={data.image_src || artwork.image_src}
+                  value={data.image_src || artwork.image_src}
                   onChange={handleChange}
                   style={{
                     display: 'block'
