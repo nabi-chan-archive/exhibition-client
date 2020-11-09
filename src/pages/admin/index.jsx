@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { getCookie } from "@utils/cookie";
-import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { GETARTWORKS } from '@gql/query/artwork';
 
@@ -21,7 +20,6 @@ export default function AdminHomePage({ artworks }) {
     <>
       <Head>
         <title>20`21 웹 아카이브전 무균전시 : 대시보드</title>
-        <NextSeo noindex={true} />
       </Head>
 
       <div>
