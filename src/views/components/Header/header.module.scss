@@ -2,6 +2,8 @@
 @import "@styles/_mixin";
 
 .Header {
+	position: sticky;
+	height: 100vh;
 	top: 0;
 	left: 0;
 	padding: 3vw;
@@ -91,8 +93,8 @@
 	}
 	
 	@include mobile {
-		position: relative;
-		height: auto;
+		position: unset !important;
+		height: unset !important;
 		
 		.title {
 			font-size: 4.5vw;
