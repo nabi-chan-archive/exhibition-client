@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps, apollo }) {
           <link rel="manifest" href="/manifest.json"/>
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177194657-1"/>
           <script dangerouslySetInnerHTML={{ __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-177194657-1');` }}/>
-          <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet" />
         </Head>
         {/*TODO : UPDATE URL, Images*/}
         <NextSeo
