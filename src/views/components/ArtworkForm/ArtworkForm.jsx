@@ -104,6 +104,7 @@ const ArtworkForm = ({ artwork = {
                 defaultValue={artwork.title}
                 onChange={handleChange}
                 required={true}
+                placeholder="작품명을 입력하세요."
               />
             </td>
           </tr>
@@ -118,6 +119,7 @@ const ArtworkForm = ({ artwork = {
                 style={{
                   resize: 'vertical',
                 }}
+                placeholder="작품 설명을 입력하세요."
               />
             </td>
           </tr>
@@ -125,13 +127,27 @@ const ArtworkForm = ({ artwork = {
             <td>아트워크 파일</td>
             <td>
               <img
-                src={data.image_src || artwork.image_src}
+                src={data.image_src || artwork.image_src || "404"}
+                alt="아트워크 이미지를 찾을 수 없습니다."
                 style={{
                   display: 'block',
-                  width: '100%',
+                  maxWidth: '402px',
+                  minHeight: '300px',
+                  maxHeight: '402px',
+                  objectFit: 'contain'
                 }}
               />
               <input type="file" required={true} onChange={handleFileUpload} />
+              <input
+                  type="text"
+                  name="image_src"
+                  value={data.image_src || artwork.image_src}
+                  onChange={handleChange}
+                  style={{
+                    display: 'block'
+                  }}
+                  placeholder="이미지의 주소를 입력하세요."
+              />
             </td>
           </tr>
           <tr>
@@ -143,6 +159,7 @@ const ArtworkForm = ({ artwork = {
                 defaultValue={artwork.author.name}
                 onChange={handleChange}
                 required={true}
+                placeholder="작가의 이름을 입력하세요"
               />
             </td>
           </tr>
@@ -155,6 +172,7 @@ const ArtworkForm = ({ artwork = {
                 defaultValue={artwork.author.position}
                 onChange={handleChange}
                 required={true}
+                placeholder="작가의 직책을 입력하세요."
               />
             </td>
           </tr>
