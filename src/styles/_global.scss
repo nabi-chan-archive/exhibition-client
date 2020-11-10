@@ -7,27 +7,11 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 	
 	main {
-		&:not(#main) {
-			margin-bottom: 5vh;
-		}
-		
-		&:not(.list) {
-			display: grid;
-			grid-template-columns: 2fr 8fr;
-			
-			header {
-				position: sticky;
-				height: 100vh;
-			}
-		}
+		display: grid;
+		grid-template-columns: 2fr 8fr;
 		
 		@include mobile {
 			display: block !important;
-		}
-		
-		video {
-			width: 100%;
-			background: white;
 		}
 	}
 }
