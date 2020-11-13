@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UPLOADIMAGE } from "@gql/mutation/upload_image";
+import { UPLOADIMAGE } from "@graphql/mutation/upload_image";
 import { useMutation } from '@apollo/client';
 
 const ArtworkForm = ({ artwork = {

@@ -2,7 +2,7 @@ import React from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import {ArtworkForm} from "@components/ArtworkForm/ArtworkForm";
-import {ADDARTWORK} from "@gql/mutation/AddArtwork";
+import {ADDARTWORK} from "@graphql/mutation/AddArtwork";
 import {useMutation} from '@apollo/client';
 
 const ModifyPostPage = () => {
