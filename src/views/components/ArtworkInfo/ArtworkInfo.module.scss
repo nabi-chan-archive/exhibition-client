@@ -1,8 +1,8 @@
-@import "@styles/_variable";
-@import "@styles/_mixin";
+@import "variable";
+@import "mixin";
 
 .comment {
-	padding: 5vh 0;
+	margin-top: 3vh;
 	
 	&.isContent {
 		display: none;
@@ -20,14 +20,16 @@
 	}
 	
 	.text {
+		box-sizing: border-box;
 		white-space: pre-line;
-		word-break: keep-all;
+		word-break: break-word;
 		font-size: 1.2vw;
+		line-height: 1.15;
 	}
 	
 	@include mobile {
 		display: none;
-		padding: 0 5vw;
+		padding: 5vh 5vw;
 		
 		&.isContent {
 			display: block;
@@ -45,6 +47,8 @@
 		
 		.text {
 			font-size: 2.5vw;
+			max-height: unset !important;
+			overflow-y: unset !important;
 		}
 	}
 }

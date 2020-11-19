@@ -1,0 +1,7 @@
+# allow all pages
+User-agent: *
+Allow: /
+
+# disallow admin page
+User-agent: *
+Disallow: /admin/

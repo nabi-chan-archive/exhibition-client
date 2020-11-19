@@ -1,5 +1,6 @@
 import React from 'react'
-import {Header, Menu} from "@components/Header/Header";
+import {Header} from "@components/Header/Header";
+import {Menu} from "@components/Menu/Menu";
 import {Strip} from "@components/Strip/Strip";
 import Head from "next/head";
 import {NextPage} from "next";
@@ -16,17 +17,13 @@ interface ArtworkListPageProps {
 const ArtworkListPage: NextPage<ArtworkListPageProps> = ({artworks}) => {
   return (
     <>
-      <Head>
-        <title>20`21 웹 아카이브전 무균전시 : 새 시대 새 빛</title>
-      </Head>
-      
       <main className={css.ArtworkListPage}>
         <Header>
           <Menu/>
         </Header>
         
         <article className={css.artworkList}>
-          {artworks ? <ArtworkList artworks={artworks} /> : null}
+          {artworks ? <ArtworkList artworks={artworks}/> : null}
           {!artworks && (
             <div className={css.notFound}>
               🚧 준비 중입니다. 🏗

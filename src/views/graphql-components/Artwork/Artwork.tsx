@@ -1,9 +1,9 @@
 import React from 'react';
+import css from "./Artwork.module.scss";
+import classcat from "classcat";
+import {Artwork as ArtworkType} from "@constants/types";
 import {Query} from "@apollo/client/react/components";
 import {GET_ARTWORK} from "@graphql/query/GetArtwork";
-import {Artwork as ArtworkType} from "@constants/types";
-import classcat from "classcat";
-import css from "@gql/ArtworkList/ArtworkList.module.scss";
 
 interface ArtworkProps {
   post_id: number;
@@ -24,7 +24,7 @@ export const Artwork: React.FC<ArtworkProps> = ({post_id, notFound, children}) =
     {({loading, error, data}) => {
       if (loading) {
         return (
-          <div className={classcat([css.ArtworkList, css.loading])}>
+          <div className={classcat([css.Artwork, css.loading])}>
             <h3>🚚 불러오는 중... 🚛</h3>
           </div>
         )
@@ -32,7 +32,7 @@ export const Artwork: React.FC<ArtworkProps> = ({post_id, notFound, children}) =
       
       if (error) {
         return (
-          <div className={classcat([css.ArtworkList, css.error])}>
+          <div className={classcat([css.Artwork, css.error])}>
             <h1>😱 이럴수가! 😱</h1>
             
             오류가 발생했습니다.

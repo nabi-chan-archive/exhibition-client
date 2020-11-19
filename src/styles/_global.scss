@@ -1,7 +1,8 @@
 @import "variable";
 @import "mixin";
 
-body {
+html {
+	line-height: 1;
 	color: $page-text-color;
 	background-color: $page-bg-color;
 	font-family: 'Noto Sans KR', sans-serif;

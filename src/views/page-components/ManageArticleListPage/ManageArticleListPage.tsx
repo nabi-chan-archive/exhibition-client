@@ -1,9 +1,9 @@
 import React from 'react';
-import css from './ManageArticleListPage.module.scss';
 import Head from "next/head";
+import Link from "next/link";
+import css from './ManageArticleListPage.module.scss';
 import {AdminHeader} from '@components/AdminHeader/AdminHeader';
 import {ArtworkList} from "@gql/ArtworkList/ArtworkList";
-import Link from "next/link";
 
 interface ManageArticleListPageProps {
 }

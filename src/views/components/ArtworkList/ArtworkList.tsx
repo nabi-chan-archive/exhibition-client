@@ -1,7 +1,7 @@
 import React from 'react';
+import Link from "next/link";
 import css from './ArtworkList.module.scss';
 import {Artwork as ArtworkType} from "@constants/types";
-import Link from "next/link";
 
 interface ArtworkListProps {
   artworks: ArtworkType[];

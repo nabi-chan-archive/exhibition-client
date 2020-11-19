@@ -1,8 +1,9 @@
 import React from 'react';
-import {NextPage} from 'next'
 import Head from 'next/head';
-import {Header, Menu} from '@components/Header/Header';
 import css from './MainPage.module.scss';
+import {NextPage} from 'next'
+import {Header} from '@components/Header/Header';
+import {Menu} from "@components/Menu/Menu";
 import {Strip} from '@components/Strip/Strip';
 
 interface MainPageProps {

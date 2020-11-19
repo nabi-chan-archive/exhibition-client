@@ -1,8 +1,12 @@
 import React from 'react';
 import {NextPage} from "next";
-import {Artwork} from "@gql/Artwork/Artwork";
 import {useRouter} from "next/router";
+import {Artwork} from "@gql/Artwork/Artwork";
 import {Header} from "@components/Header/Header";
+import {BackLink} from "@components/BackLink/BackLink";
+import {ArtworkInfo} from "@components/ArtworkInfo/ArtworkInfo";
+import {ArtworkBody} from "@components/ArtworkBody/ArtworkBody";
+import {Strip} from "@components/Strip/Strip";
 
 interface ArtworkPageProps {
   post_id: number;
@@ -21,12 +25,13 @@ const ArtworkPage: NextPage<ArtworkPageProps> = ({post_id}) => {
       {({artwork}) => (
         <main>
           <Header>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab asperiores est iste iusto magni modi necessitatibus neque quos ratione totam. Ab aliquam blanditiis cumque dignissimos dolores ea earum error excepturi fugit, in magnam molestiae natus necessitatibus
+            <BackLink/>
+            <ArtworkInfo data={artwork}/>
           </Header>
           
-          <article>
-            {JSON.stringify(artwork)}
-          </article>
+          <ArtworkBody data={artwork}/>
+  
+          <Strip text="Scroll Down" content={4} />
         </main>
       )}
     </Artwork>

@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import {useRouter} from "next/router";
 import {NextPage} from "next";
+import {useRouter} from "next/router";
 import {createApolloClient} from "@graphql/client";
-import {GETARTWORK} from "@graphql/query/artwork";
-import {REMOVEARTWORK} from "@graphql/mutation/RemoveArtwork";
-import {Artwork} from "@constants/types";
 import {useMutation} from "@apollo/client";
+import {GET_ARTWORK} from "@graphql/query/GetArtwork";
+import {REMOVE_ARTWORK} from "@graphql/mutation/RemoveArtwork";
+import {Artwork} from "@constants/types";
 
 interface ArtworkRemovePageProps {
   artwork: Artwork;
@@ -14,7 +14,7 @@ interface ArtworkRemovePageProps {
 
 const ArtworkRemovePage: NextPage<ArtworkRemovePageProps> = ({artwork, post_id}) => {
   const route = useRouter();
-  const [removeArtwork] = useMutation(REMOVEARTWORK);
+  const [removeArtwork] = useMutation(REMOVE_ARTWORK);
   
   useEffect(() => {
     const check = confirm(`정말로 ${artwork.title} - ${artwork.author.name}를 삭제 하시겠습니까?`);
@@ -48,7 +48,7 @@ ArtworkRemovePage.getInitialProps = async ({query}) => {
   const {
     data: {artwork}
   } = await client.query({
-    query: GETARTWORK,
+    query: GET_ARTWORK,
     variables: {
       post_id,
     },

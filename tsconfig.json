@@ -5,8 +5,8 @@
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"],
       "@graphql/*": ["src/graphql/*"],
-      "@components/*": ["src/views/components/*"],
       "@gql/*": ["src/views/graphql-components/*"],
+      "@components/*": ["src/views/components/*"],
       "@constants/*": ["src/constants/*"]
     },
     "target": "es5",

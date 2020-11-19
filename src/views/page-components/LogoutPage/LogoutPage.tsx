@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
-import {delCookie} from "@utils/cookie";
 import {useRouter} from "next/router";
-import Link from "next/link";
+import {delCookie} from "@utils/cookie";
 
 interface LogoutPageProps {
 }

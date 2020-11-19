@@ -13,3 +13,11 @@ export interface Artwork {
   image_src: string;
   author: Author;
 }
+
+export interface User {
+  user_id: number;
+  name: string;
+  email: string;
+  is_admin: boolean;
+  password: string;
+}

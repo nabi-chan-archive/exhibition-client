@@ -1,9 +1,10 @@
 import React, {useCallback, useEffect, useRef} from 'react';
-import {setCookie} from '@utils/cookie';
-import {sha512} from 'js-sha512';
-import {LOGIN} from '@graphql/query/login';
+import css from './LoginPage.module.scss';
 import {useRouter} from 'next/router';
 import {useLazyQuery} from "@apollo/client";
+import {setCookie} from '@utils/cookie';
+import {sha512} from 'js-sha512';
+import {LOGIN} from '@graphql/query/Login';
 
 interface LoginPageProps {
 }
@@ -29,11 +30,6 @@ const LoginPage: React.FC<LoginPageProps> = () => {
         }
       }
     });
-    
-    // 12시간
-    // setCookie("accessToken", accessToken, 60 * 60 * 12);
-    // 7일
-    // setCookie("refreshToken", refreshToken, 60 * 60 * 24 * 7);
   }, [emailRef, passwordRef]);
   
   useEffect(() => {
@@ -48,7 +44,10 @@ const LoginPage: React.FC<LoginPageProps> = () => {
       }
     } = data;
     
+    // 12시간
     setCookie("accessToken", accessToken, 60 * 60 * 12);
+    
+    // 7일
     setCookie("refreshToken", refreshToken, 60 * 60 * 24 * 7);
     
     router
@@ -57,9 +56,20 @@ const LoginPage: React.FC<LoginPageProps> = () => {
   }, [data]);
   
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="email" required ref={emailRef}/>
-      <input type="password" required ref={passwordRef}/>
+    <form onSubmit={handleSubmit} className={css.LoginPage}>
+      <input
+        type="email"
+        ref={emailRef}
+        className={css.input}
+        placeholder="email"
+        required/>
+        
+      <input
+        type="password"
+        ref={passwordRef}
+        className={css.input}
+        placeholder="password"
+        required/>
       
       <button>
         로그인

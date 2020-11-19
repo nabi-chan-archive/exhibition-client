@@ -1,25 +1,23 @@
 import React from 'react';
-import css from './ArtworkList.module.scss';
+import css from './UserList.module.scss';
 import classcat from "classcat";
-import {Artwork, ArtworkType} from "@constants/types";
+import {User} from "@constants/types";
 import {Query} from "@apollo/client/react/components";
-import {GET_ARTWORK_LIST} from '@graphql/query/GetArtworkList';
+import {GET_USER_LIST} from '@graphql/query/GetUserList';
 
-interface ArtworkListProps {
-  type?: ArtworkType;
+interface UserListProps {
   children: React.FC<Data>;
 }
 
 interface Data {
-  artworks: Artwork[]
+  get_users: User[]
 }
 
 interface Variables {
-  type?: ArtworkType
 }
 
-export const ArtworkList : React.FC<ArtworkListProps> = ({type, children}) => (
-  <Query<Data, Variables> query={GET_ARTWORK_LIST} variables={{type: type}}>
+export const UserList : React.FC<UserListProps> = ({ children}) => (
+  <Query<Data, Variables> query={GET_USER_LIST}>
     {({loading, error, data}) => {
       if (loading) {
         return (
@@ -37,14 +35,6 @@ export const ArtworkList : React.FC<ArtworkListProps> = ({type, children}) => (
             오류가 발생했습니다.
             
             <h3>{error.toString()}</h3>
-          </div>
-        )
-      }
-      
-      if (!data.artworks.length) {
-        return (
-          <div className={classcat([css.ArtworkList, css.null])}>
-            🚧 준비 중입니다. 🏗
           </div>
         )
       }
