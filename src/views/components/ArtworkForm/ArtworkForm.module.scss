@@ -1,0 +1,71 @@
+@import "variable";
+@import "mixin";
+
+.ArtworkForm {
+	padding: 0 20px 20px 20px;
+	
+	.table {
+		width: 100%;
+		border-spacing: 0 20px;
+		
+		td:first-child {
+			width: 25%;
+		}
+		
+		td:last-child {
+			width: 75%;
+		}
+		
+		input,
+		select,
+		textarea {
+			width: 100%;
+			box-sizing: border-box;
+			padding: 5px;
+		}
+		
+		textarea {
+			resize: vertical;
+		}
+		
+		.fileUpload {
+			.btnWrap {
+				margin-bottom: 15px;
+				
+				.button {
+					display: inline-block;
+					border: solid 1px $page-text-color;
+					padding: 5px;
+					cursor: pointer;
+					
+					&.current {
+						background-color: $page-hg-color;
+					}
+					
+					&:not(:last-child) {
+						margin-right: 6px;
+					}
+				}
+			}
+			
+			.preview {
+				max-width: 75%;
+			}
+			
+			.uploadWrap {
+				margin-top: 15px;
+			}
+		}
+	}
+	
+	.buttonWrap {
+		display: flex;
+		
+		button {
+			border: none;
+			cursor: pointer;
+			padding: 10px 20px;
+			margin-right: 20px;
+		}
+	}
+}
