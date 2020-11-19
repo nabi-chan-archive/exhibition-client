@@ -34,6 +34,7 @@
 	
 	@include mobile {
 		height: unset !important;
+		display: unset !important;
 		
 		.title {
 			font-size: 4.5vw;
