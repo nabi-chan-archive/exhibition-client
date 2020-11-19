@@ -24,7 +24,7 @@ const ArtworkPage: NextPage<ArtworkPageProps> = ({post_id}) => {
     <Artwork post_id={post_id} notFound={handleNotFound}>
       {({artwork}) => (
         <main>
-          <Header>
+          <Header isArtwork>
             <BackLink/>
             <ArtworkInfo data={artwork}/>
           </Header>
