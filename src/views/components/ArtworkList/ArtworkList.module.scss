@@ -1,0 +1,21 @@
+@import "variable";
+@import "mixin";
+
+.ArtworkList {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-column-gap: 3vw;
+	
+	.column {
+		text-align: center;
+		
+		.row {
+			display: block;
+			margin-bottom: 3vw;
+			
+			.poster {
+				width: 100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+@import "variable";
+@import "mixin";
+
+.LoginPage {
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	.input {
+		margin-bottom: 30px;
+	}
+}

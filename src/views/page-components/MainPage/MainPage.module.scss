@@ -1,0 +1,9 @@
+@import "variable";
+@import "mixin";
+
+.MainPage {
+	.video {
+		width: 100%;
+		outline: none;
+	}
+}
