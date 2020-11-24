@@ -12,7 +12,7 @@
 	
 	&.artwork {
 		display: grid;
-		grid-template-rows: 1fr 9fr;
+		grid-template-rows: 23fr 77fr;
 		grid-row-gap: 4vh;
 		
 		.title {
@@ -29,7 +29,7 @@
 	}
 	
 	.content {
-		overflow: auto;
+		overflow-y: auto;
 	}
 	
 	@include mobile {
