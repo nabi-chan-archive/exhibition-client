@@ -20,41 +20,46 @@ interface Variables {
   post_id: number;
 }
 
-export const Artwork: React.FC<ArtworkProps> = ({post_id, notFound, children}) => (
-  <Query<Data, Variables> query={GET_ARTWORK} variables={{post_id}}>
-    {({loading, error, data}) => {
-      if (loading) {
-        return (
-          <div className={classcat([css.Artwork, css.loading])}>
-            <h3>🚚 불러오는 중... 🚛</h3>
-          </div>
-        )
-      }
-      
-      if (error) {
-        errorWebHook(error.toString(), error);
+export const Artwork: React.FC<ArtworkProps> = ({post_id, notFound, children}) => {
+  if (!post_id) {
+    return <div />
+  }
+  
+  return (
+    <Query<Data, Variables> query={GET_ARTWORK} variables={{post_id}}>
+      {({loading, error, data}) => {
+        if (loading) {
+          return (
+            <div className={classcat([css.Artwork, css.loading])}>
+              <h3>🚚 불러오는 중... 🚛</h3>
+            </div>
+          )
+        }
         
-        return (
-          <div className={classcat([css.Artwork, css.error])}>
-            <h1>😱 이럴수가! 😱</h1>
-            
-            오류가 발생했습니다.
-            
-            <h3>{error.toString()}</h3>
-          </div>
-        )
-      }
-      
-      if (!data.artwork) {
-        notFound();
+        if (error) {
+          errorWebHook(error.toString(), error);
+          
+          return (
+            <div className={classcat([css.Artwork, css.error])}>
+              <h1>😱 이럴수가! 😱</h1>
+              
+              오류가 발생했습니다.
+              
+              <h3>{error.toString()}</h3>
+            </div>
+          )
+        }
         
-        return (
-          <div/>
-        );
-      }
-      
-      return children(data);
-    }}
-  </Query>
-)
-
+        if (!data.artwork) {
+          notFound();
+          
+          return (
+            <div/>
+          );
+        }
+        
+        return children(data);
+      }}
+    </Query>
+  )
+}
