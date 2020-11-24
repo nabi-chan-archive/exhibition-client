@@ -22,7 +22,7 @@ const MainPage: NextPage<MainPageProps> = () => {
         </Header>
         
         <video className={css.video} autoPlay muted loop>
-          <source src="https://exhibiton-2021-image.s3.ap-northeast-2.amazonaws.com/POSTER.mp4" type="video/mp4"/>
+          <source src="https://d2glkkoidqjuti.cloudfront.net/POSTER.mp4" type="video/mp4"/>
           해당 브라우저에서는 video 태그를 지원하지 않습니다.
         </video>
       </main>

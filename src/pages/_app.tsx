@@ -45,7 +45,7 @@ class App extends NextApp<AppProps> {
               content="당신과 사회에 해롭지 않은 전시"
             />
             <meta property="og:image"
-                  content="https://exhibiton-2021-image.s3.ap-northeast-2.amazonaws.com/POSTER.jpg"/>
+                  content="https://d2glkkoidqjuti.cloudfront.net/POSTER.jpg"/>
             <meta name="twitter:card" content="summary_large_image"/>
             <meta name="twitter:title" content="20`21 웹 아카이브전 무균전시 : 새 시대 새 빛"/>
             <meta
