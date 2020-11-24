@@ -4,6 +4,7 @@ import classcat from "classcat";
 import {Artwork as ArtworkType} from "@constants/types";
 import {Query} from "@apollo/client/react/components";
 import {GET_ARTWORK} from "@graphql/query/GetArtwork";
+import {errorWebHook} from '@utils/WebHook'
 
 interface ArtworkProps {
   post_id: number;
@@ -31,6 +32,8 @@ export const Artwork: React.FC<ArtworkProps> = ({post_id, notFound, children}) =
       }
       
       if (error) {
+        errorWebHook(error.toString(), error);
+        
         return (
           <div className={classcat([css.Artwork, css.error])}>
             <h1>😱 이럴수가! 😱</h1>
