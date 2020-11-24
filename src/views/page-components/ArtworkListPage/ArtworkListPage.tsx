@@ -57,7 +57,7 @@ ArtworkListPage.getInitialProps = async ({res, query: {type}}) => {
   });
   
   return {
-    artworks
+    artworks: artworks.slice().sort(() => Math.random() - 0.5)
   };
 };
 

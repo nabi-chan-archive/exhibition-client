@@ -207,7 +207,7 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
           </td>
           <td>
             <input
-              name="summary"
+              name="position"
               defaultValue={artwork?.author.position}
               placeholder="작가를 짧게 설명해주세요."
               maxLength={50}

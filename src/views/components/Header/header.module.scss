@@ -34,9 +34,11 @@
 	
 	@include mobile {
 		height: unset !important;
+		display: block !important;
 		
 		.title {
 			font-size: 4.5vw;
+			margin-bottom: 4vh !important;
 		}
 	}
 }
