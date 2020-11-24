@@ -18,6 +18,8 @@ class App extends NextApp<AppProps> {
       apolloClient = createApolloClient({})
     } = this.props;
     
+    const gtag = process.env.NODE_ENV === 'production' ? 'G-V5QE05D1XS' : null;
+    
     return (
       <>
         <Head>
@@ -51,9 +53,8 @@ class App extends NextApp<AppProps> {
               content="당신과 사회에 해롭지 않은 전시"
             />
             <meta name="twitter:creator" content="@pinot_kim"/>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177194657-1"/>
-            <script
-              dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-177194657-1');`}}/>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-V5QE05D1XS" />
+            <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${gtag}');`}}/>
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet"/>
           </>
         </Head>
