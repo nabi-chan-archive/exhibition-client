@@ -19,6 +19,7 @@ class App extends NextApp<AppProps> {
     } = this.props;
     
     const gtag = process.env.NODE_ENV === 'production' ? 'G-V5QE05D1XS' : null;
+    const hjar = process.env.NODE_ENV === 'production' ? '2147146' : null;
     
     return (
       <>
@@ -55,6 +56,7 @@ class App extends NextApp<AppProps> {
             <meta name="twitter:creator" content="@pinot_kim"/>
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-V5QE05D1XS" />
             <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${gtag}');`}}/>
+            <script dangerouslySetInnerHTML={{__html: `(function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:${hjar},hjsv:6}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}} />
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet"/>
           </>
         </Head>
