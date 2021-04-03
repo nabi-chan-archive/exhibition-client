@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import classcat from 'classcat';
 import css from './ArtworkForm.module.scss';
 import {useRouter} from 'next/router';
-import {UPLOAD_IMAGE} from "@graphql/mutation/UploadImage";
-import {useMutation} from '@apollo/client';
 import {Artwork} from "@constants/types";
 
 interface ArtworkFormProps {
@@ -17,7 +15,7 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
   const [uploadFrom, setUploadFrom] = useState<"google" | "upload" | "link">("upload");
   
   const route = useRouter();
-  const [uploadImage] = useMutation(UPLOAD_IMAGE);
+  // const [uploadImage] = useMutation(UPLOAD_IMAGE);
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,24 +30,24 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
       const file = files[0];
       
       try {
-        const {
-          data: {
-            upload_image: {
-              filename
-            }
-          },
-        } = await uploadImage({
-          variables: {
-            file,
-          },
-        });
+        // const {
+        //   data: {
+        //     upload_image: {
+        //       filename
+        //     }
+        //   },
+        // } = await uploadImage({
+        //   variables: {
+        //     file,
+        //   },
+        // });
+        //
+        // setData({
+        //   ...data,
+        //   [name]: filename
+        // });
         
-        setData({
-          ...data,
-          [name]: filename
-        });
-        
-        console.debug('파일 업로드 성공! ' + filename);
+        // console.debug('파일 업로드 성공! ' + filename);
       } catch (e) {
         if (e.toString().includes("401")) {
           alert('로그인되지 않았습니다.\n다시 로그인해주세요.');
