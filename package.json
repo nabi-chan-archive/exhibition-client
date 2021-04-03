@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "exit"
+    "test": "exit",
+    "prisma:genereate": "prisma generate",
+    "prisma:studio": "prisma studio",
+    "prisma:push": "prisma db push --preview-feature"
   },
   "dependencies": {
+    "@prisma/client": "2.20.1",
     "classcat": "^4.1.0",
     "date-fns": "^2.16.1",
     "dotenv-webpack": "^4.0.0",
@@ -16,6 +20,7 @@
     "next": "9.5.2",
     "next-seo": "^4.11.0",
     "normalize.css": "^8.0.1",
+    "prisma": "2.20.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "sass": "^1.26.10"
