@@ -28,8 +28,6 @@ const Login: NextApiHandler = async (req, res) => {
       res.status(403).end("Forbidden");
     }
     
-    console.log(user);
-    
     const accessToken = await generateToken(
         user,
         {
