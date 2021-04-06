@@ -3,6 +3,9 @@ import classcat from 'classcat';
 import css from './ArtworkForm.module.scss';
 import {useRouter} from 'next/router';
 import {Artwork} from "@constants/types";
+import axios from "axios";
+import {API_PATH} from "@constants/api";
+import {getCookie} from "@utils/cookie";
 
 interface ArtworkFormProps {
   artwork?: Artwork;
@@ -15,8 +18,6 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
   const [uploadFrom, setUploadFrom] = useState<"google" | "upload" | "link">("upload");
   
   const route = useRouter();
-  // const [uploadImage] = useMutation(UPLOAD_IMAGE);
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(data);
@@ -27,27 +28,26 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
     
     // file upload
     if (files) {
-      const file = files[0];
-      
       try {
-        // const {
-        //   data: {
-        //     upload_image: {
-        //       filename
-        //     }
-        //   },
-        // } = await uploadImage({
-        //   variables: {
-        //     file,
-        //   },
-        // });
-        //
-        // setData({
-        //   ...data,
-        //   [name]: filename
-        // });
+        const formData = new FormData();
+        formData.append("files", files[0]);
         
-        // console.debug('파일 업로드 성공! ' + filename);
+        const { data: filepath } = await axios({
+          method: "POST",
+          url: `${API_PATH}/api/image/upload`,
+          data: formData,
+          headers: {
+            accessToken: getCookie("accessToken"),
+            "Content-Type": "multipart/form-data"
+          }
+        });
+        
+        console.debug('파일 업로드 성공! ' + filepath);
+        
+        setData({
+          ...data,
+          image_src: filepath,
+        })
       } catch (e) {
         if (e.toString().includes("401")) {
           alert('로그인되지 않았습니다.\n다시 로그인해주세요.');
