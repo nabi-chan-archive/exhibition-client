@@ -55,12 +55,12 @@ const uploadImage = async (req: Request, res: NextApiResponse) => {
     
     const blob = req.files[0]
     
-    const {S3_ACCESS_KEY, S3_SECRET_KEY, AWS_REGION, BUCKET_NAME, BUCKET_URL, CLOUDFRONT_URL} = process.env;
+    const {S3_ACCESS_KEY, S3_SECRET_KEY, BUCKET_REGION, BUCKET_NAME, BUCKET_URL, CLOUDFRONT_URL} = process.env;
     
     const s3 = new aws.S3({
       accessKeyId: S3_ACCESS_KEY,
       secretAccessKey: S3_SECRET_KEY,
-      region: AWS_REGION,
+      region: BUCKET_REGION,
     });
 
     const [name, type] = blob.originalname.split('.')
