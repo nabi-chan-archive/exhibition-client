@@ -1,48 +1,51 @@
-import React from 'react';
-import {NextPage} from "next";
-import {useRouter} from "next/router";
-import {Artwork} from "@gql/Artwork/Artwork";
+import React from "react";
+import {GetServerSideProps, NextPage} from "next";
 import {Header} from "@components/Header/Header";
 import {BackLink} from "@components/BackLink/BackLink";
 import {ArtworkInfo} from "@components/ArtworkInfo/ArtworkInfo";
 import {ArtworkBody} from "@components/ArtworkBody/ArtworkBody";
 import {Strip} from "@components/Strip/Strip";
+import axios from "axios";
+import {API_PATH} from "@constants/api";
+import {Artwork} from "@constants/types";
 
 interface ArtworkPageProps {
-  post_id: number;
+  artwork: Artwork
 }
 
-const ArtworkPage: NextPage<ArtworkPageProps> = ({post_id}) => {
-  const router = useRouter();
-  
-  const handleNotFound = async () => {
-    alert('아트워크를 찾을 수 없습니다 😅');
-    await router.replace('/artworks');
-  }
-  
+const ArtworkPage: NextPage<ArtworkPageProps> = ({ artwork }) => {
   return (
-    <Artwork post_id={post_id} notFound={handleNotFound}>
-      {({artwork}) => (
-        <main>
-          <Header isArtwork>
-            <BackLink/>
-            <ArtworkInfo data={artwork}/>
-          </Header>
-          
-          <ArtworkBody data={artwork}/>
-  
-          <Strip text="Scroll Down" content={4} />
-        </main>
-      )}
-    </Artwork>
+      <main>
+        <Header isArtwork>
+          <BackLink/>
+          <ArtworkInfo data={artwork}/>
+        </Header>
+        
+        <ArtworkBody data={artwork}/>
+        
+        <Strip text="Scroll Down" content={4}/>
+      </main>
   );
 };
 
-ArtworkPage.getInitialProps = async ({query}) => {
-  const {post_id} = query;
-  
-  return {
-    post_id: parseInt(post_id as string)
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  try {
+    const { data } = await axios.get(`${API_PATH}/api/artwork/${query.post_id}`);
+    return {
+      props: {
+        artwork: data
+      }
+    }
+  } catch (e) {
+    console.error(e.toJSON());
+    return {
+      redirect: {
+        destination: "/"
+      },
+      props: {
+        artwork: {}
+      }
+    }
   }
 }
 

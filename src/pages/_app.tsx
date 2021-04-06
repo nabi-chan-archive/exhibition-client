@@ -1,21 +1,13 @@
 import React from 'react'
 import Head from "next/head";
-import {ApolloProvider} from '@apollo/client';
 import '@styles/main.scss';
-import NextApp, {AppInitialProps} from "next/app";
-import {ApolloClient} from "@apollo/client";
-import {createApolloClient} from "@graphql/client";
+import NextApp from "next/app";
 
-type AppProps = AppInitialProps & {
-  apolloClient?: ApolloClient<object>;
-};
-
-class App extends NextApp<AppProps> {
+class App extends NextApp {
   render() {
     const {
       pageProps,
       Component,
-      apolloClient = createApolloClient({})
     } = this.props;
     
     const gtag = process.env.NODE_ENV === 'production' ? 'G-V5QE05D1XS' : null;
@@ -61,9 +53,7 @@ class App extends NextApp<AppProps> {
           </>
         </Head>
         
-        <ApolloProvider client={apolloClient}>
-          <Component {...pageProps} />
-        </ApolloProvider>
+        <Component {...pageProps} />
       </>
     );
   }

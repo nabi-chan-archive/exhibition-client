@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model artworks {
+  post_id   Int       @id @default(autoincrement())
+  type      String?   @db.VarChar(20)
+  title     String?   @db.VarChar(100)
+  published DateTime? @db.DateTime(0)
+  summary   String?   @db.VarChar(3000)
+  image_src String?   @db.VarChar(500)
+  author    String?   @db.VarChar(30)
+  position  String?   @db.VarChar(50)
+}
+
+model token {
+  token_id   BigInt    @id @default(autoincrement())
+  user_id    Int?
+  token      String?   @db.Text
+  created_at DateTime? @db.Timestamp(0)
+  expired_at DateTime? @db.Timestamp(0)
+  payload    Json?
+}
+
+model user {
+  user_id  Int      @id @default(autoincrement())
+  name     String?  @db.VarChar(30)
+  email    String?  @db.VarChar(100)
+  is_admin Boolean? @default(false)
+  password String?  @db.VarChar(512)
+}

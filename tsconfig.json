@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@utils/*": ["src/utils/*"],
+      "@lib/*": ["src/lib/*"],
       "@styles/*": ["src/styles/*"],
       "@graphql/*": ["src/graphql/*"],
       "@gql/*": ["src/views/graphql-components/*"],
