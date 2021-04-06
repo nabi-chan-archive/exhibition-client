@@ -191,7 +191,7 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
           <td>
             <input
               name="author"
-              defaultValue={artwork?.author.name}
+              defaultValue={artwork?.author}
               placeholder="작가의 이름을 적어주세요."
               maxLength={30}
               onChange={handleChange}
@@ -206,7 +206,7 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
           <td>
             <input
               name="position"
-              defaultValue={artwork?.author.position}
+              defaultValue={artwork?.position}
               placeholder="작가를 짧게 설명해주세요."
               maxLength={50}
               onChange={handleChange}

@@ -1,19 +1,20 @@
 import React from "react";
-import {NextPage} from "next";
+import {GetServerSideProps, NextPage} from "next";
 import {AdminHeader} from "@components/AdminHeader/AdminHeader";
 import {ArtworkForm} from "@components/ArtworkForm/ArtworkForm";
 import {Artwork as ArtworkType} from "@constants/types";
 import {useRouter} from "next/router";
+import axios from "axios";
+import {API_PATH} from "@constants/api";
+import {getCookie} from "@utils/cookie";
 
 interface ModifyArtworkPageProps {
+  artwork: ArtworkType
   post_id: number;
 }
 
-const ModifyArtworkPage: NextPage<ModifyArtworkPageProps> = ({post_id}) => {
+const ModifyArtworkPage: NextPage<ModifyArtworkPageProps> = ({artwork, post_id}) => {
   const router = useRouter();
-  
-  // const [modifyArtwork] = useMutation(MODIFY_ARTWORK);
-  // const [removeArtwork] = useMutation(REMOVE_ARTWORK);
   
   const handleSubmit = async (input: ArtworkType) => {
     if (!input) {
@@ -22,16 +23,22 @@ const ModifyArtworkPage: NextPage<ModifyArtworkPageProps> = ({post_id}) => {
     }
     
     try {
-      // const {
-      //   data
-      // } = await modifyArtwork({
-      //   variables: {
-      //     id: post_id,
-      //     input
-      //   }
-      // });
+      const result = axios({
+        method: "PUT",
+        url: `${API_PATH}/api/artwork/${post_id}`,
+        headers: {
+          "accessToken": getCookie("accessToken")
+        },
+        data: input
+      });
+  
+      result.then(() => {
+        alert("수정에 성공했습니다.");
+      }).catch((e) => {
+        console.log(e.toString())
+        alert("수정에 실패했습니다.");
+      });
       
-      // alert(`${data.modify_artwork}개의 내용이 수정되었습니다.`);
       await router.replace("/admin");
     }
     catch (e) {
@@ -46,16 +53,21 @@ const ModifyArtworkPage: NextPage<ModifyArtworkPageProps> = ({post_id}) => {
     if (!check) return;
     
     try {
-      // const {
-      //   data
-      // } = await removeArtwork({
-      //   variables: {
-      //     id: post_id,
-      //   }
-      // });
-      
-      alert(`아트워크가 삭제되었습니다.`);
-      await router.replace("/admin");
+      const result = axios({
+        method: "DELETE",
+        url: `${API_PATH}/api/artwork/${post_id}`,
+        headers: {
+          "accessToken": getCookie("accessToken")
+        }
+      });
+  
+      result.then(() => {
+        alert("삭제에 성공했습니다.");
+        router.replace("/admin");
+      }).catch((e) => {
+        console.log(e.toString())
+        alert("삭제에 실패했습니다.");
+      });
     }
     catch (e) {
       alert("아트워크를 삭제하던 도중 오류가 발생했습니다.");
@@ -63,30 +75,45 @@ const ModifyArtworkPage: NextPage<ModifyArtworkPageProps> = ({post_id}) => {
     }
   };
   
-  const handleNotFound = async () => {
-    alert("아트워크를 찾을 수 없습니다 😅");
-    await router.replace("/artworks");
-  };
-  
   return (
       <>
         <AdminHeader/>
-        {/*<ArtworkForm*/}
-        {/*    artwork={artwork}*/}
-        {/*    onSubmit={handleSubmit}*/}
-        {/*>*/}
-        {/*  <button type="reset" onClick={() => handleRemove(artwork)}>*/}
-        {/*    삭제하기*/}
-        {/*  </button>*/}
-        {/*</ArtworkForm>*/}
+        <ArtworkForm
+            artwork={artwork}
+            onSubmit={handleSubmit}
+        >
+          <button type="reset" onClick={() => handleRemove(artwork)}>
+            삭제하기
+          </button>
+        </ArtworkForm>
       </>
   );
 };
 
-ModifyArtworkPage.getInitialProps = async ({query}) => {
-  return {
-    post_id: parseInt(query.post_id as string),
-  };
-};
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  try {
+    const { data } = await axios.get(`${API_PATH}/api/artwork/${query.post_id}`);
+    
+    return {
+      props: {
+        post_id: query.post_id,
+        artwork: data,
+      }
+    }
+  } catch (e) {
+    return {
+      props: {
+        post_id: 0,
+        artwork: {},
+      }
+    }
+  }
+}
+
+// ModifyArtworkPage.getInitialProps = async ({query}) => {
+//   return {
+//     post_id: parseInt(query.post_id as string),
+//   };
+// };
 
 export default ModifyArtworkPage;
