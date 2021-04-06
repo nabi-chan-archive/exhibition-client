@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react';
-import {NextPage} from "next";
+import React, {useEffect} from "react";
+import {GetServerSideProps, NextPage} from "next";
 import {useRouter} from "next/router";
-import {createApolloClient} from "@graphql/client";
-import {useMutation} from "@apollo/client";
-import {GET_ARTWORK} from "@graphql/query/GetArtwork";
-import {REMOVE_ARTWORK} from "@graphql/mutation/RemoveArtwork";
 import {Artwork} from "@constants/types";
+import axios from "axios";
+import {API_PATH} from "@constants/api";
+import {getCookie} from "@utils/cookie";
 
 interface ArtworkRemovePageProps {
   artwork: Artwork;
@@ -14,49 +13,52 @@ interface ArtworkRemovePageProps {
 
 const ArtworkRemovePage: NextPage<ArtworkRemovePageProps> = ({artwork, post_id}) => {
   const route = useRouter();
-  const [removeArtwork] = useMutation(REMOVE_ARTWORK);
   
   useEffect(() => {
-    const check = confirm(`정말로 ${artwork.title} - ${artwork.author.name}를 삭제 하시겠습니까?`);
+    const check = confirm(`정말로 ${artwork.title} - ${artwork.author}를 삭제 하시겠습니까?`);
     if (!check) return;
     
-    removeArtwork({
-      variables: {
-        id: post_id,
+    const result = axios({
+      method: "DELETE",
+      url: `${API_PATH}/api/artwork/${post_id}`,
+      headers: {
+        "accessToken": getCookie("accessToken")
       }
-    }).then(() => {
-      alert('삭제 완료!');
-    }).catch((error) => {
-      alert('삭제하는 과정에서 오류가 발생했습니다.');
-      console.error(error);
-    })
+    });
     
-    route
-      .push('/admin')
-      .then(() => console.log('redirect complete'));
+    result.then(() => {
+      alert("삭제에 성공했습니다.");
+      route.push("/admin").then(() => console.log("redirect complete"));
+    }).catch((e) => {
+      console.log(e.toString())
+      alert("삭제에 실패했습니다.");
+    });
   }, []);
   
   return (
-    <div/>
+      <div/>
   );
-}
+};
 
-ArtworkRemovePage.getInitialProps = async ({query}) => {
-  const post_id = parseInt(query.post_id as string);
-  const client = createApolloClient({});
-  
-  const {
-    data: {artwork}
-  } = await client.query({
-    query: GET_ARTWORK,
-    variables: {
-      post_id,
-    },
-  })
-  
-  return {
-    artwork,
-    post_id
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  try {
+    const { post_id } = query;
+    
+    const { data } = await axios.get(`${API_PATH}/api/artwork/${post_id}`);
+    
+    return {
+      props: {
+        artwork: data,
+        post_id,
+      }
+    }
+  } catch (e) {
+    return {
+      props: {
+        artwork: {},
+        post_id: 0,
+      }
+    }
   }
 }
 

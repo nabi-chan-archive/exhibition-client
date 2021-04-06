@@ -1,1 +1,1 @@
-export {default} from "../../../../views/page-components/ModifyArtworkPage/ModifyArtworkpage";
+export {default, getServerSideProps} from "../../../../views/page-components/ModifyArtworkPage/ModifyArtworkpage";

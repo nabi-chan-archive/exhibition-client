@@ -1,1 +1,1 @@
-export {default} from "../../views/page-components/ManageArticleListPage/ManageArticleListPage";
+export {default, getServerSideProps} from "../../views/page-components/ManageArticleListPage/ManageArticleListPage";

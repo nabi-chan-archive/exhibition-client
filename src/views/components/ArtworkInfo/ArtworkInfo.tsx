@@ -9,16 +9,16 @@ interface ArtworkInfoProps {
 }
 
 export const ArtworkInfo: React.FC<ArtworkInfoProps> = ({isContent = false, data}) => {
-  const {title, author, summary} = data;
+  const {title, author, position, summary} = data;
   
   return (
     <div className={classcat([css.comment, isContent && css.isContent])}>
       <h3 className={classcat([css.artTitle])}>{title}</h3>
       
       <h4 className={classcat([css.about])}>
-        {author.name}
+        {author}
         <br/>
-        {author.position}
+        {position}
       </h4>
       
       <p className={classcat([css.text])}>

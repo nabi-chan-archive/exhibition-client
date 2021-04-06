@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import classcat from 'classcat';
 import css from './ArtworkForm.module.scss';
 import {useRouter} from 'next/router';
-import {UPLOAD_IMAGE} from "@graphql/mutation/UploadImage";
-import {useMutation} from '@apollo/client';
 import {Artwork} from "@constants/types";
+import axios from "axios";
+import {API_PATH} from "@constants/api";
+import {getCookie} from "@utils/cookie";
 
 interface ArtworkFormProps {
   artwork?: Artwork;
@@ -17,8 +18,6 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
   const [uploadFrom, setUploadFrom] = useState<"google" | "upload" | "link">("upload");
   
   const route = useRouter();
-  const [uploadImage] = useMutation(UPLOAD_IMAGE);
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(data);
@@ -29,27 +28,26 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
     
     // file upload
     if (files) {
-      const file = files[0];
-      
       try {
-        const {
-          data: {
-            upload_image: {
-              filename
-            }
-          },
-        } = await uploadImage({
-          variables: {
-            file,
-          },
+        const formData = new FormData();
+        formData.append("files", files[0]);
+        
+        const { data: filepath } = await axios({
+          method: "POST",
+          url: `${API_PATH}/api/image/upload`,
+          data: formData,
+          headers: {
+            accessToken: getCookie("accessToken"),
+            "Content-Type": "multipart/form-data"
+          }
         });
+        
+        console.debug('파일 업로드 성공! ' + filepath);
         
         setData({
           ...data,
-          [name]: filename
-        });
-        
-        console.debug('파일 업로드 성공! ' + filename);
+          image_src: filepath,
+        })
       } catch (e) {
         if (e.toString().includes("401")) {
           alert('로그인되지 않았습니다.\n다시 로그인해주세요.');
@@ -193,7 +191,7 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
           <td>
             <input
               name="author"
-              defaultValue={artwork?.author.name}
+              defaultValue={artwork?.author}
               placeholder="작가의 이름을 적어주세요."
               maxLength={30}
               onChange={handleChange}
@@ -208,7 +206,7 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
           <td>
             <input
               name="position"
-              defaultValue={artwork?.author.position}
+              defaultValue={artwork?.position}
               placeholder="작가를 짧게 설명해주세요."
               maxLength={50}
               onChange={handleChange}
