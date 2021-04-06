@@ -19,7 +19,7 @@ function initMiddleware(middleware: any) {
 export const config = {
   api: {
     bodyParser: false,
-  },
+  },``
 }
 
 interface Request extends NextApiRequest {

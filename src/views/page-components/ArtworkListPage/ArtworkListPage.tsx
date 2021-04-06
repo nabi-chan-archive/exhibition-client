@@ -72,28 +72,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
   }
 }
 
-// ArtworkListPage.getInitialProps = async ({res, query: {type}}) => {
-// const client = createApolloClient({});
-// const typeRegex = /(poster|photography|undefined)/;
-
-// if (type && !typeRegex.test(type as string)) {
-//   type = undefined;
-//   res.writeHead(302, {
-//     Location: '/artworks'
-//   });
-//   res.end();
-// }
-
-// const {data: {artworks}} = await client.query({
-//   query: GET_ARTWORK_LIST,
-//   variables: {
-//     type
-//   }
-// });
-
-// return {
-//   artworks: artworks.slice().sort(() => Math.random() - 0.5)
-// };
-// };
-
 export default ArtworkListPage;

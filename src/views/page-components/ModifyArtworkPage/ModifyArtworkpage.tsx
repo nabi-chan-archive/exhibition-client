@@ -110,10 +110,4 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   }
 }
 
-// ModifyArtworkPage.getInitialProps = async ({query}) => {
-//   return {
-//     post_id: parseInt(query.post_id as string),
-//   };
-// };
-
 export default ModifyArtworkPage;
