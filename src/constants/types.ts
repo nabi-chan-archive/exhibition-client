@@ -17,3 +17,12 @@ export interface User {
   is_admin: boolean;
   password: string;
 }
+
+export interface AccessToken {
+  user_id: number;
+  email: string;
+  name: string;
+  is_admin: boolean;
+  exp: number;
+  iss: '2021exhibition.online';
+}

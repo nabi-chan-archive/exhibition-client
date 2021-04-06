@@ -27,7 +27,7 @@ export const generateToken = async (payload, options) => {
   });
 };
 
-export const decodeToken = async (token) =>
+export const decodeToken = async <T>(token) : Promise<T> =>
     new Promise((resolve, reject) => {
       if (!JWT_SECRET) return;
       jwt.verify(token, JWT_SECRET, (err, decoded) => {
