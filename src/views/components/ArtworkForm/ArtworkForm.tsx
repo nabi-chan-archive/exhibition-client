@@ -14,7 +14,7 @@ interface ArtworkFormProps {
 }
 
 const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) => {
-  const [data, setData] = useState<Artwork>();
+  const [data, setData] = useState<Artwork>(artwork);
   const [uploadFrom, setUploadFrom] = useState<"google" | "upload" | "link">("upload");
   
   const route = useRouter();
@@ -24,7 +24,15 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
   };
   
   const handleChange = async ({target}) => {
-    let {name, value, files} = target;
+    let {name, value, type, checked, files} = target;
+    
+    if (type === "checkbox") {
+      setData({
+        ...data,
+        video: checked
+      })
+      return;
+    }
     
     // file upload
     if (files) {
@@ -47,6 +55,7 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
         setData({
           ...data,
           image_src: filepath,
+          video: files[0].type.split('/')[0] === "video"
         })
       } catch (e) {
         if (e.toString().includes("401")) {
@@ -155,10 +164,13 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
             </div>
             
             <div>
-              <img
-                className={css.preview}
-                src={data?.image_src || artwork?.image_src}
-                alt="이미지를 찾을 수 없습니다."/>
+              {data?.video || artwork.video ? (
+                  <video controls muted loop className={css.preview}>
+                    <source src={data?.image_src || artwork?.image_src} type="video/mp4" />
+                  </video>
+              ) : (
+                  <img className={css.preview} src={data?.image_src || artwork?.image_src} alt="이미지를 찾을 수 없습니다."/>
+              )}
             </div>
             
             <div className={css.uploadWrap}>
@@ -211,6 +223,14 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
               maxLength={50}
               onChange={handleChange}
               type="text"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            모션포스터
+          </td>
+          <td>
+            <input name="video" checked={data?.video} onChange={handleChange} type="checkbox"/>
           </td>
         </tr>
         </tbody>
