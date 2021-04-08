@@ -6,7 +6,7 @@ import axios from "axios";
 import {API_PATH} from "@constants/api";
 import {getCookie} from "@utils/cookie";
 
-const AddArtworkPage = ({artwork}) => {
+const AddArtworkPage = ({artwork, env}) => {
   const router = useRouter();
   
   const handleSubmit = async (input) => {
@@ -36,11 +36,20 @@ const AddArtworkPage = ({artwork}) => {
         <AdminHeader/>
         
         <ArtworkForm
+            env={JSON.parse(env)}
             artwork={artwork}
             onSubmit={handleSubmit}
         />
       </>
   );
 };
+
+export const getServerSideProps = () => {
+  return {
+    props: {
+      env: JSON.stringify(process.env)
+    }
+  }
+}
 
 export default AddArtworkPage;
