@@ -16,6 +16,7 @@ model artworks {
   image_src String?   @db.VarChar(500)
   author    String?   @db.VarChar(30)
   position  String?   @db.VarChar(50)
+  video     Boolean?  @default(false)
 }
 
 model token {

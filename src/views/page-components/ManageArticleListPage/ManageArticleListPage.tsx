@@ -41,7 +41,15 @@ const ManageArticleListPage: React.FC<ManageArticleListPageProps> = ({ artworks 
                     <td>{artwork.type}</td>
                     <td>{artwork.title}</td>
                     <td>{artwork.author}</td>
-                    <td><img src={artwork.image_src} alt=""/></td>
+                    <td>{
+                      artwork.video ? (
+                          <video controls muted loop className={css.preview}>
+                            <source src={artwork?.image_src} type="video/mp4" />
+                          </video>
+                      ) : (
+                          <img src={artwork.image_src} alt=""/>
+                      )
+                    }</td>
                     <td>
                       <ul>
                         <li>
