@@ -20,11 +20,12 @@ const MainPage: NextPage<MainPageProps> = () => {
         <Header>
           <Menu/>
         </Header>
-        
-        <video className={css.video} autoPlay muted loop>
-          <source src="https://d2glkkoidqjuti.cloudfront.net/POSTER.mp4" type="video/mp4"/>
-          해당 브라우저에서는 video 태그를 지원하지 않습니다.
-        </video>
+  
+        <img
+            className={css.video}
+            src="https://d2glkkoidqjuti.cloudfront.net/poster.jpeg"
+            alt="20`21 웹 아카이브전 무균전시 : 새 시대 새 빛"
+        />
       </main>
       
       <Strip text={'20`21 Web Archive Exhibition 무균전시 - Exhibition of STERILE'} content={1}/>
