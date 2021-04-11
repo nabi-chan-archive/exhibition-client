@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
       
       return {
         props: {
-          artworks: data
+          artworks: shuffle(data)
         }
       }
     }
