@@ -9,6 +9,7 @@ import css from "./ArtworkListPage.module.scss";
 import {ArtworkList} from "@components/ArtworkList/ArtworkList";
 import axios from "axios";
 import { API_PATH } from "@constants/api";
+import { shuffle } from "@utils/utils";
 
 interface ArtworkListPageProps {
   artworks: Artwork[];
@@ -46,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
       
       return {
         props: {
-          artworks: data
+          artworks: shuffle(data)
         }
       }
     }
@@ -55,7 +56,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query }
   
     return {
       props: {
-        artworks: data
+        artworks: shuffle(data)
       }
     }
   } catch (e) {

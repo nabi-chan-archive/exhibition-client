@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 
+throw new Error("prisma has deprecated!");
+
 let prisma: PrismaClient
 
 if (process.env.NODE_ENV === 'production') {

@@ -1,1 +1,1 @@
-export {default} from '../../../views/page-components/AddArtworkPage/AddArtworkPage'
+export {default, getServerSideProps} from '../../../views/page-components/AddArtworkPage/AddArtworkPage'

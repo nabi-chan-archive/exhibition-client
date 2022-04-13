@@ -9,6 +9,22 @@ interface ArtworkBodyProps {
 }
 
 export const ArtworkBody : React.FC<ArtworkBodyProps> = ({data}) => {
+  if (data.video) {
+    return (
+        <article className={css.article}>
+          <video controls muted loop className={classcat([css.image, css.big])}>
+            <source src={data.image_src} type="video/mp4" />
+          </video>
+      
+          <ArtworkInfo isContent data={data}/>
+  
+          <video controls muted loop className={classcat([css.image, css.small])}>
+            <source src={data.image_src} type="video/mp4" />
+          </video>
+        </article>
+    )
+  }
+  
   return (
     <article className={css.article}>
       <img

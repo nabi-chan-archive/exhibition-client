@@ -11,9 +11,12 @@ import {getCookie} from "@utils/cookie";
 interface ModifyArtworkPageProps {
   artwork: ArtworkType
   post_id: number;
+  env: {
+    [key: string]: string
+  }
 }
 
-const ModifyArtworkPage: NextPage<ModifyArtworkPageProps> = ({artwork, post_id}) => {
+const ModifyArtworkPage: NextPage<ModifyArtworkPageProps> = ({artwork, post_id, env}) => {
   const router = useRouter();
   
   const handleSubmit = async (input: ArtworkType) => {
@@ -79,6 +82,7 @@ const ModifyArtworkPage: NextPage<ModifyArtworkPageProps> = ({artwork, post_id})
       <>
         <AdminHeader/>
         <ArtworkForm
+            env={env}
             artwork={artwork}
             onSubmit={handleSubmit}
         >
@@ -98,6 +102,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {
         post_id: query.post_id,
         artwork: data,
+        env: JSON.stringify(process.env)
       }
     }
   } catch (e) {
@@ -105,6 +110,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {
         post_id: 0,
         artwork: {},
+        env: {}
       }
     }
   }

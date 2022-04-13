@@ -8,6 +8,7 @@ export interface Artwork {
   image_src: string;
   author: string;
   position?: string;
+  video?: boolean;
 }
 
 export interface User {

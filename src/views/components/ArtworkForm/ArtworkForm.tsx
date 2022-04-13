@@ -3,18 +3,19 @@ import classcat from 'classcat';
 import css from './ArtworkForm.module.scss';
 import {useRouter} from 'next/router';
 import {Artwork} from "@constants/types";
-import axios from "axios";
-import {API_PATH} from "@constants/api";
-import {getCookie} from "@utils/cookie";
+import aws from "aws-sdk";
 
 interface ArtworkFormProps {
   artwork?: Artwork;
   onSubmit: (e) => void;
   children?: JSX.Element | JSX.Element[];
+  env: {
+    [key: string]: string
+  }
 }
 
-const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) => {
-  const [data, setData] = useState<Artwork>();
+const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children,  env}) => {
+  const [data, setData] = useState<Artwork>(artwork);
   const [uploadFrom, setUploadFrom] = useState<"google" | "upload" | "link">("upload");
   
   const route = useRouter();
@@ -24,29 +25,51 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
   };
   
   const handleChange = async ({target}) => {
-    let {name, value, files} = target;
+    let {name, value, type, checked, files} = target;
+    
+    if (type === "checkbox") {
+      setData({
+        ...data,
+        video: checked
+      })
+      return;
+    }
     
     // file upload
     if (files) {
       try {
-        const formData = new FormData();
-        formData.append("files", files[0]);
+        const {S3_ACCESS_KEY, S3_SECRET_KEY, BUCKET_REGION, BUCKET_NAME, BUCKET_URL, CLOUDFRONT_URL} = env;
         
-        const { data: filepath } = await axios({
-          method: "POST",
-          url: `${API_PATH}/api/image/upload`,
-          data: formData,
-          headers: {
-            accessToken: getCookie("accessToken"),
-            "Content-Type": "multipart/form-data"
-          }
-        });
+        aws.config.update({
+          accessKeyId: S3_ACCESS_KEY,
+          secretAccessKey: S3_SECRET_KEY,
+          region: BUCKET_REGION,
+        })
+        
+        const bucket = new aws.S3();
+  
+        const [name, type] = files[0].name.split('.');
+        const params = {
+          Bucket: BUCKET_NAME,
+          Key: `${new Date().getTime()}_${name}.${type}`,
+          Body: files[0],
+          ContentType: files[0].type,
+          ACL: 'public-read',
+        };
+        
+        const file = await bucket.upload(params, (error, data) => {
+          console.log(error);
+          console.log(data)
+        }).promise();
+        
+        const filepath = file.Location.replace(BUCKET_URL, CLOUDFRONT_URL);
         
         console.debug('파일 업로드 성공! ' + filepath);
-        
+  
         setData({
           ...data,
           image_src: filepath,
+          video: files[0].type.split('/')[0] === "video"
         })
       } catch (e) {
         if (e.toString().includes("401")) {
@@ -155,10 +178,13 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
             </div>
             
             <div>
-              <img
-                className={css.preview}
-                src={data?.image_src || artwork?.image_src}
-                alt="이미지를 찾을 수 없습니다."/>
+              {data?.video || artwork?.video ? (
+                  <video controls muted loop className={css.preview}>
+                    <source src={data?.image_src || artwork?.image_src} type="video/mp4" />
+                  </video>
+              ) : (
+                  <img className={css.preview} src={data?.image_src || artwork?.image_src} alt="이미지를 찾을 수 없습니다."/>
+              )}
             </div>
             
             <div className={css.uploadWrap}>
@@ -211,6 +237,14 @@ const ArtworkForm: React.FC<ArtworkFormProps> = ({artwork, onSubmit, children}) 
               maxLength={50}
               onChange={handleChange}
               type="text"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            모션포스터
+          </td>
+          <td>
+            <input name="video" checked={data?.video} onChange={handleChange} type="checkbox"/>
           </td>
         </tr>
         </tbody>
